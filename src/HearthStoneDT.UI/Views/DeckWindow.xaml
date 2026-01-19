@@ -8,7 +8,8 @@
         Topmost="True"
         ShowInTaskbar="False"
         Width="220"
-        Height="300">
+        Height="300"
+        MouseLeftButtonDown="DeckWindow_MouseLeftButtonDown">
 
     <Border Background="#AA000000" CornerRadius="6" Padding="10">
         <StackPanel>
