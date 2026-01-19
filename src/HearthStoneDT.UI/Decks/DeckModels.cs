@@ -8,6 +8,7 @@ namespace HearthStoneDT.UI.Decks
         public string Name { get; set; } = "";
         public int Count { get; set; }
         public int Cost { get; set; }
+        public string Rarity{ get; set; } = "COMMON";
     }
 
     public sealed class DeckDefinition

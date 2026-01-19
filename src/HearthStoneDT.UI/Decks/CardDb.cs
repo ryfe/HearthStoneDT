@@ -13,6 +13,7 @@ namespace HearthStoneDT.UI.Decks
         public string CardId { get; set; } = "";
         public string NameKo { get; set; } = "";
         public int Cost { get; set; }
+        public string Rarity{ get; set; } = "COMMON";
     }
 
     public sealed class CardDb
@@ -55,6 +56,8 @@ namespace HearthStoneDT.UI.Decks
                 string cardId = el.TryGetProperty("id", out var idEl) ? (idEl.GetString() ?? "") : "";
                 string name = el.TryGetProperty("name", out var nameEl) ? (nameEl.GetString() ?? "") : "";
                 int cost = el.TryGetProperty("cost", out var costEl) ? costEl.GetInt32() : 0;
+                string rarity = el.TryGetProperty("rarity", out var rarEl) ? (rarEl.GetString() ?? "COMMON") : "COMMON";
+
 
                 if (string.IsNullOrWhiteSpace(cardId))
                     continue;
@@ -64,7 +67,8 @@ namespace HearthStoneDT.UI.Decks
                     DbfId = dbfId,
                     CardId = cardId,
                     NameKo = name,
-                    Cost = cost
+                    Cost = cost,
+                    Rarity = rarity
                 };
             }
 

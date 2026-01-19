@@ -43,7 +43,7 @@ namespace HearthStoneDT.UI.Views
 
                 if (string.IsNullOrWhiteSpace(deck.DeckCode))
                 {
-                    DeckNameText.Text = $"{deck.Name} (DeckCode 없음)";
+                    DeckCountText.Text = "(DeckCode 없음)";
                     OverlayCardList.ItemsSource = null;
                     return;
                 }
@@ -59,15 +59,16 @@ namespace HearthStoneDT.UI.Views
                     int count = kv.Value;
 
                     if (cardDb.TryGet(dbfId, out var info))
-                        list.Add(new DeckCard { Name = info.NameKo, Cost = info.Cost, Count = count });
+                        list.Add(new DeckCard { Name = info.NameKo, Cost = info.Cost, Count = count, Rarity = info.Rarity });
                     else
                         list.Add(new DeckCard { Name = $"알 수 없는 카드(dbfId={dbfId})", Cost = 0, Count = count });
                 }
 
-                OverlayCardList.ItemsSource = list
-                    .OrderBy(x => x.Cost)
-                    .ThenBy(x => x.Name)
-                    .ToList();
+                var sorted = list.OrderBy(x => x.Cost).ThenBy(x => x.Name).ToList();
+                OverlayCardList.ItemsSource = sorted;
+
+                int totalCards = sorted.Sum(x => x.Count);
+                DeckCountText.Text = $"{totalCards}장";
             }
             catch (Exception ex)
             {
