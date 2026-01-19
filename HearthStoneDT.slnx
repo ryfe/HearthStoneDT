@@ -1,0 +1,5 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/HearthStoneDT.UI/HearthStoneDT.UI.csproj" />
+  </Folder>
+</Solution>
