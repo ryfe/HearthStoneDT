@@ -5,11 +5,14 @@ namespace HearthStoneDT.UI.Decks
 {
     public sealed class DeckCard
     {
+        public int DbfId { get; set; }
+        public string CardId { get; set; } = "";
         public string Name { get; set; } = "";
-        public int Count { get; set; }
         public int Cost { get; set; }
-        public string Rarity{ get; set; } = "COMMON";
+        public int Count { get; set; }
+        public string Rarity { get; set; } = "COMMON";
     }
+
 
     public sealed class DeckDefinition
     {

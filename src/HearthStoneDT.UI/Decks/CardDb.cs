@@ -22,6 +22,7 @@ namespace HearthStoneDT.UI.Decks
 
         private readonly string _path;
         private Dictionary<int, CardInfo>? _byDbfId;
+        private Dictionary<string, CardInfo>? _byCardId;
 
         public CardDb()
         {
@@ -73,12 +74,18 @@ namespace HearthStoneDT.UI.Decks
             }
 
             _byDbfId = map;
+            _byCardId = map.Values.ToDictionary(x=>x.CardId,StringComparer.OrdinalIgnoreCase);
         }
 
         public bool TryGet(int dbfId, out CardInfo info)
         {
             info = default!;
             return _byDbfId != null && _byDbfId.TryGetValue(dbfId, out info);
+        }
+        public bool TryGetByCardId(string cardId, out CardInfo info)
+        {
+            info = default!;
+            return _byCardId != null && _byCardId.TryGetValue(cardId, out info);
         }
 
         private async Task EnsureFileAsync()
