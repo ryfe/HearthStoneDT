@@ -8,4 +8,8 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Chuck-HearthDb" Version="34.2.0" />
+  </ItemGroup>
+
 </Project>

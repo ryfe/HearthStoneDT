@@ -39,3 +39,96 @@
    at System.Windows.Threading.ExceptionWrapper.InternalRealCall(Delegate callback, Object args, Int32 numArgs)
    at System.Windows.Threading.ExceptionWrapper.TryCatchWhen(Object source, Delegate callback, Object args, Int32 numArgs, Delegate catchHandler)
 
+[2026-01-19 오후 11:29:39] System.InvalidOperationException: ItemsSource를 사용하려면 항목 컬렉션이 비어 있어야 합니다.
+   at System.Windows.Controls.ItemCollection.SetItemsSource(IEnumerable value, Func`2 GetSourceItem)
+   at System.Windows.Controls.ItemsControl.OnItemsSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+   at System.Windows.FrameworkElement.OnPropertyChanged(DependencyPropertyChangedEventArgs e)
+   at System.Windows.DependencyObject.NotifyPropertyChange(DependencyPropertyChangedEventArgs args)
+   at System.Windows.DependencyObject.UpdateEffectiveValue(EntryIndex entryIndex, DependencyProperty dp, PropertyMetadata metadata, EffectiveValueEntry oldEntry, EffectiveValueEntry& newEntry, Boolean coerceWithDeferredReference, Boolean coerceWithCurrentValue, OperationType operationType)
+   at System.Windows.DependencyObject.SetValueCommon(DependencyProperty dp, Object value, PropertyMetadata metadata, Boolean coerceWithDeferredReference, Boolean coerceWithCurrentValue, OperationType operationType, Boolean isInternal)
+   at System.Windows.DependencyObject.SetValue(DependencyProperty dp, Object value)
+   at HearthStoneDT.UI.Views.MainWindow.DeckList_SelectionChanged(Object sender, SelectionChangedEventArgs e) in C:\HearthStoneDT\src\HearthStoneDT.UI\Views\MainWindow.xaml.cs:line 106
+   at System.Threading.Tasks.Task.<>c.<ThrowAsync>b__124_0(Object state)
+   at System.Windows.Threading.ExceptionWrapper.InternalRealCall(Delegate callback, Object args, Int32 numArgs)
+   at System.Windows.Threading.ExceptionWrapper.TryCatchWhen(Object source, Delegate callback, Object args, Int32 numArgs, Delegate catchHandler)
+
+[2026-01-20 오전 12:37:39] System.Windows.Markup.XamlParseException: ''System.Windows.Baml2006.TypeConverterMarkupExtension'에 대한 값 제공에서 예외가 throw되었습니다.' 줄 번호 '43' 및 줄 위치 '66'
+ ---> System.FormatException: Left is not a valid value for VerticalAlignment.
+ ---> System.ArgumentException: Requested value 'Left' was not found.
+   at System.Enum.TryParseByName[TStorage](RuntimeType enumType, ReadOnlySpan`1 value, Boolean ignoreCase, Boolean throwOnFailure, TStorage& result)
+   at System.Enum.TryParseByValueOrName[TUnderlying,TStorage](RuntimeType enumType, ReadOnlySpan`1 value, Boolean ignoreCase, Boolean throwOnFailure, TUnderlying& result)
+   at System.Enum.TryParse(Type enumType, ReadOnlySpan`1 value, Boolean ignoreCase, Boolean throwOnFailure, Object& result)
+   at System.Enum.Parse(Type enumType, String value, Boolean ignoreCase)
+   at System.ComponentModel.EnumConverter.ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, Object value)
+   --- End of inner exception stack trace ---
+   at System.ComponentModel.EnumConverter.ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, Object value)
+   at MS.Internal.Xaml.Runtime.ClrObjectRuntime.CallProvideValue(MarkupExtension me, IServiceProvider serviceProvider)
+   --- End of inner exception stack trace ---
+   at System.Windows.Markup.XamlReader.RewrapException(Exception e, IXamlLineInfo lineInfo, Uri baseUri)
+   at System.Windows.Markup.WpfXamlLoader.Load(XamlReader xamlReader, IXamlObjectWriterFactory writerFactory, Boolean skipJournaledProperties, Object rootObject, XamlObjectWriterSettings settings, Uri baseUri)
+   at System.Windows.Markup.WpfXamlLoader.LoadBaml(XamlReader xamlReader, Boolean skipJournaledProperties, Object rootObject, XamlAccessLevel accessLevel, Uri baseUri)
+   at System.Windows.Markup.XamlReader.LoadBaml(Stream stream, ParserContext parserContext, Object parent, Boolean closeStream)
+   at System.Windows.Application.LoadComponent(Object component, Uri resourceLocator)
+   at HearthStoneDT.UI.Views.MainWindow.InitializeComponent() in C:\HearthStoneDT\src\HearthStoneDT.UI\Views\MainWindow.xaml:line 1
+   at HearthStoneDT.UI.Views.MainWindow..ctor() in C:\HearthStoneDT\src\HearthStoneDT.UI\Views\MainWindow.xaml.cs:line 17
+   at HearthStoneDT.UI.App.Application_Startup(Object sender, StartupEventArgs e) in C:\HearthStoneDT\src\HearthStoneDT.UI\App.xaml.cs:line 22
+   at System.Windows.Application.<.ctor>b__1_0(Object unused)
+   at System.Windows.Threading.ExceptionWrapper.InternalRealCall(Delegate callback, Object args, Int32 numArgs)
+   at System.Windows.Threading.ExceptionWrapper.TryCatchWhen(Object source, Delegate callback, Object args, Int32 numArgs, Delegate catchHandler)
+
+[2026-01-20 오전 12:39:19] System.Windows.Markup.XamlParseException: ''System.Windows.Baml2006.TypeConverterMarkupExtension'에 대한 값 제공에서 예외가 throw되었습니다.' 줄 번호 '43' 및 줄 위치 '66'
+ ---> System.FormatException: Left is not a valid value for VerticalAlignment.
+ ---> System.ArgumentException: Requested value 'Left' was not found.
+   at System.Enum.TryParseByName[TStorage](RuntimeType enumType, ReadOnlySpan`1 value, Boolean ignoreCase, Boolean throwOnFailure, TStorage& result)
+   at System.Enum.TryParseByValueOrName[TUnderlying,TStorage](RuntimeType enumType, ReadOnlySpan`1 value, Boolean ignoreCase, Boolean throwOnFailure, TUnderlying& result)
+   at System.Enum.TryParse(Type enumType, ReadOnlySpan`1 value, Boolean ignoreCase, Boolean throwOnFailure, Object& result)
+   at System.Enum.Parse(Type enumType, String value, Boolean ignoreCase)
+   at System.ComponentModel.EnumConverter.ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, Object value)
+   --- End of inner exception stack trace ---
+   at System.ComponentModel.EnumConverter.ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, Object value)
+   at MS.Internal.Xaml.Runtime.ClrObjectRuntime.CallProvideValue(MarkupExtension me, IServiceProvider serviceProvider)
+   --- End of inner exception stack trace ---
+   at System.Windows.Markup.XamlReader.RewrapException(Exception e, IXamlLineInfo lineInfo, Uri baseUri)
+   at System.Windows.Markup.WpfXamlLoader.Load(XamlReader xamlReader, IXamlObjectWriterFactory writerFactory, Boolean skipJournaledProperties, Object rootObject, XamlObjectWriterSettings settings, Uri baseUri)
+   at System.Windows.Markup.WpfXamlLoader.LoadBaml(XamlReader xamlReader, Boolean skipJournaledProperties, Object rootObject, XamlAccessLevel accessLevel, Uri baseUri)
+   at System.Windows.Markup.XamlReader.LoadBaml(Stream stream, ParserContext parserContext, Object parent, Boolean closeStream)
+   at System.Windows.Application.LoadComponent(Object component, Uri resourceLocator)
+   at HearthStoneDT.UI.Views.MainWindow.InitializeComponent() in C:\HearthStoneDT\src\HearthStoneDT.Ui\Views\MainWindow.xaml:line 1
+   at HearthStoneDT.UI.Views.MainWindow..ctor() in C:\HearthStoneDT\src\HearthStoneDT.Ui\Views\MainWindow.xaml.cs:line 17
+   at HearthStoneDT.UI.App.Application_Startup(Object sender, StartupEventArgs e) in C:\HearthStoneDT\src\HearthStoneDT.Ui\App.xaml.cs:line 22
+   at System.Windows.Application.<.ctor>b__1_0(Object unused)
+   at System.Windows.Threading.ExceptionWrapper.InternalRealCall(Delegate callback, Object args, Int32 numArgs)
+   at System.Windows.Threading.ExceptionWrapper.TryCatchWhen(Object source, Delegate callback, Object args, Int32 numArgs, Delegate catchHandler)
+
+[2026-01-20 오전 12:50:07] System.Windows.Markup.XamlParseException: ''System.Windows.Baml2006.TypeConverterMarkupExtension'에 대한 값 제공에서 예외가 throw되었습니다.' 줄 번호 '44' 및 줄 위치 '68'
+ ---> System.FormatException: Right is not a valid value for VerticalAlignment.
+ ---> System.ArgumentException: Requested value 'Right' was not found.
+   at System.Enum.TryParseByName[TStorage](RuntimeType enumType, ReadOnlySpan`1 value, Boolean ignoreCase, Boolean throwOnFailure, TStorage& result)
+   at System.Enum.TryParseByValueOrName[TUnderlying,TStorage](RuntimeType enumType, ReadOnlySpan`1 value, Boolean ignoreCase, Boolean throwOnFailure, TUnderlying& result)
+   at System.Enum.TryParse(Type enumType, ReadOnlySpan`1 value, Boolean ignoreCase, Boolean throwOnFailure, Object& result)
+   at System.Enum.Parse(Type enumType, String value, Boolean ignoreCase)
+   at System.ComponentModel.EnumConverter.ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, Object value)
+   --- End of inner exception stack trace ---
+   at System.ComponentModel.EnumConverter.ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, Object value)
+   at MS.Internal.Xaml.Runtime.ClrObjectRuntime.CallProvideValue(MarkupExtension me, IServiceProvider serviceProvider)
+   --- End of inner exception stack trace ---
+   at System.Windows.Markup.XamlReader.RewrapException(Exception e, IXamlLineInfo lineInfo, Uri baseUri)
+   at System.Windows.Markup.WpfXamlLoader.Load(XamlReader xamlReader, IXamlObjectWriterFactory writerFactory, Boolean skipJournaledProperties, Object rootObject, XamlObjectWriterSettings settings, Uri baseUri)
+   at System.Windows.Markup.WpfXamlLoader.LoadBaml(XamlReader xamlReader, Boolean skipJournaledProperties, Object rootObject, XamlAccessLevel accessLevel, Uri baseUri)
+   at System.Windows.Markup.XamlReader.LoadBaml(Stream stream, ParserContext parserContext, Object parent, Boolean closeStream)
+   at System.Windows.Application.LoadComponent(Object component, Uri resourceLocator)
+   at HearthStoneDT.UI.Views.MainWindow.InitializeComponent() in C:\HearthStoneDT\src\HearthStoneDT.UI\Views\MainWindow.xaml:line 1
+   at HearthStoneDT.UI.Views.MainWindow..ctor() in C:\HearthStoneDT\src\HearthStoneDT.UI\Views\MainWindow.xaml.cs:line 17
+   at HearthStoneDT.UI.App.Application_Startup(Object sender, StartupEventArgs e) in C:\HearthStoneDT\src\HearthStoneDT.UI\App.xaml.cs:line 22
+   at System.Windows.Application.<.ctor>b__1_0(Object unused)
+   at System.Windows.Threading.ExceptionWrapper.InternalRealCall(Delegate callback, Object args, Int32 numArgs)
+   at System.Windows.Threading.ExceptionWrapper.TryCatchWhen(Object source, Delegate callback, Object args, Int32 numArgs, Delegate catchHandler)
+
+[2026-01-20 오전 12:51:45] System.InvalidOperationException: 전역 핫키 등록 실패: id=1001
+   at HearthStoneDT.UI.Overlay.OverlayController.Register(Int32 id, UInt32 modifiers, Key key) in C:\HearthStoneDT\src\HearthStoneDT.UI\Overlay\OverlayController.cs:line 102
+   at HearthStoneDT.UI.Overlay.OverlayController.Initialize() in C:\HearthStoneDT\src\HearthStoneDT.UI\Overlay\OverlayController.cs:line 34
+   at HearthStoneDT.UI.App.Application_Startup(Object sender, StartupEventArgs e) in C:\HearthStoneDT\src\HearthStoneDT.UI\App.xaml.cs:line 20
+   at System.Windows.Application.<.ctor>b__1_0(Object unused)
+   at System.Windows.Threading.ExceptionWrapper.InternalRealCall(Delegate callback, Object args, Int32 numArgs)
+   at System.Windows.Threading.ExceptionWrapper.TryCatchWhen(Object source, Delegate callback, Object args, Int32 numArgs, Delegate catchHandler)
+

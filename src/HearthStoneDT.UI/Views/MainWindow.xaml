@@ -1,14 +1,96 @@
 <Window x:Class="HearthStoneDT.UI.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MAIN(버튼 테스트)"
-        Width="400"
-        Height="300"
-        Background="White">
-    <StackPanel Margin="20">
-        <TextBlock Text="MAIN WINDOW" FontSize="24" Margin="0,0,0,20"/>
-        <Button Content="덱 윈도우 열기"
-                Height="40"
-                Click="OpenDeck_Click"/>
-    </StackPanel>
+        Title="HearthStoneDT"
+        Background="White"
+        SizeToContent="WidthAndHeight"
+        MinWidth="500"
+        MaxWidth="1200"
+        MinHeight="500"
+        MaxHeight="900">
+    <Grid Margin="12">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="276"/>
+            <ColumnDefinition Width="12"/>
+            <ColumnDefinition Width="320"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- 왼쪽: 덱 목록 + 버튼 -->
+        <DockPanel Grid.Column="0">
+            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,0,0,10">
+                <Button Content="New Deck" Height="34" Width="80" Click="OpenAddDeck_Click"/>
+                <Button Content="Delete Deck" Height="34" Width="100" Margin="8,0,0,0" Click="DeleteDeck_Click"/>
+                <Button Content="Reload" Height="34" Width="80" Margin="8,0,0,0" Click="Reload_Click"/>
+            </StackPanel>
+
+            <ListBox x:Name="DeckList"
+                     DisplayMemberPath="Name"
+                     SelectionChanged="DeckList_SelectionChanged"
+                     Width="276"/>
+        </DockPanel>
+
+        <!-- 오른쪽: 선택 덱 미리보기 -->
+        <Grid Grid.Column="2" Width="320">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>  <!-- Title -->
+            <RowDefinition Height="Auto"/>  <!-- Meta -->
+            <RowDefinition Height="*"/>     <!-- List -->
+            <RowDefinition Height="Auto"/>  <!-- Status+Button -->
+        </Grid.RowDefinitions>
+
+        <!-- 1) 위: 덱 제목/메타 -->
+
+
+        <!-- 2) 가운데: 카드 리스트 -->
+        <ListView x:Name="CardList"
+                Grid.Row="2"
+                HorizontalContentAlignment="Stretch">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="코스트" Width="60">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Cost}"
+                                        HorizontalAlignment="Stretch"
+                                        TextAlignment="Center"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="카드명" Width="200" DisplayMemberBinding="{Binding Name}"/>
+
+                    <GridViewColumn Header="수량" Width="50">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Count}"
+                                        HorizontalAlignment="Stretch"
+                                        TextAlignment="Center"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <!-- 3) 아래: Status 왼쪽 + 버튼 오른쪽 -->
+        <DockPanel Grid.Row="3" Margin="0,10,0,0" LastChildFill="True">
+            <Button Content="Show Deck"
+                    DockPanel.Dock="Right"
+                    Height="34"
+                    Click="ShowOnDeckOverlay_Click"/>
+
+            <TextBlock x:Name="StatusText"
+                    VerticalAlignment="Center"
+                    Opacity="0.8"/>
+        </DockPanel>
+    </Grid>
+
+
+    </Grid>
 </Window>

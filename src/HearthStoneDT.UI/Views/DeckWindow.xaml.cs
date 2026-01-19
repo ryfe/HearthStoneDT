@@ -1,11 +1,17 @@
-using System.ComponentModel;
+
+using System.IO;
 using System.Windows;
-using HearthStoneDT.UI.Overlay;
 using System.Windows.Input;
+using HearthStoneDT.UI.Decks;
+using HearthStoneDT.UI.Overlay;
+using System.ComponentModel;
+
+
 namespace HearthStoneDT.UI.Views
 {
     public partial class DeckWindow : ToggleableOverlayBase
     {
+        private readonly CardDb _cardDb = new();
         private const string PlacementKey = "deck_window";
 
         public DeckWindow()
@@ -28,6 +34,46 @@ namespace HearthStoneDT.UI.Views
             };
 
             Closing += OnClosing;
+        }
+        public async Task SetDeckAsync(DeckDefinition deck, CardDb cardDb)
+        {
+            try
+            {
+                DeckNameText.Text = deck.Name;
+
+                if (string.IsNullOrWhiteSpace(deck.DeckCode))
+                {
+                    DeckNameText.Text = $"{deck.Name} (DeckCode 없음)";
+                    OverlayCardList.ItemsSource = null;
+                    return;
+                }
+
+                await cardDb.EnsureLoadedAsync();
+
+                var dbfCounts = DeckCodeDecoder.DecodeToDbfCounts(deck.DeckCode);
+
+                var list = new List<DeckCard>();
+                foreach (var kv in dbfCounts)
+                {
+                    int dbfId = kv.Key;
+                    int count = kv.Value;
+
+                    if (cardDb.TryGet(dbfId, out var info))
+                        list.Add(new DeckCard { Name = info.NameKo, Cost = info.Cost, Count = count });
+                    else
+                        list.Add(new DeckCard { Name = $"알 수 없는 카드(dbfId={dbfId})", Cost = 0, Count = count });
+                }
+
+                OverlayCardList.ItemsSource = list
+                    .OrderBy(x => x.Cost)
+                    .ThenBy(x => x.Name)
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                File.WriteAllText(@"C:\HearthStoneDT\deckwindow_setdeck_crash.txt", ex.ToString());
+                throw;
+            }
         }
         private void DeckWindow_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {

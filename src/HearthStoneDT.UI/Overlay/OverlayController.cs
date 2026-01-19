@@ -2,6 +2,7 @@ using System;
 using System.Windows;
 using System.Windows.Input;
 using HearthStoneDT.UI.Views;
+using HearthStoneDT.UI.Decks;
 
 namespace HearthStoneDT.UI.Overlay
 {
@@ -22,7 +23,7 @@ namespace HearthStoneDT.UI.Overlay
         private GlobalHotKeyHost? _hotKeyHost;
 
         private DeckWindow? _deckWindow;
-
+        public CardDb CardDb { get; } = new CardDb();
         public void Initialize()
         {
             // 메시지용 HWND 생성 + 핫키 등록
@@ -101,6 +102,23 @@ namespace HearthStoneDT.UI.Overlay
                 throw new InvalidOperationException($"전역 핫키 등록 실패: id={id}");
             }
         }
+ // 추가
+
+        public async Task ShowDeckAsync(DeckDefinition deck)
+        {
+            EnsureDeckWindow();
+
+            if (!_deckWindow!.IsVisible)
+                _deckWindow.Show();
+
+            await CardDb.EnsureLoadedAsync();
+
+            await _deckWindow.SetDeckAsync(deck, CardDb);
+
+            _deckWindow.Activate();
+            _deckWindow.SetInteractive(false);
+        }
+
 
         public void Dispose()
         {
