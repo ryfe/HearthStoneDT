@@ -23,13 +23,21 @@ namespace HearthStoneDT.UI.Views
             {
                 var raw = RawDeckTextBox.Text;
                 var deck = DeckParser.Parse(raw);
-
+                var originalName = deck.Name;
                 deck.SavedAt = DateTime.Now;
 
-                SavedDeck = _store.AddOrReplace(deck);
+                // ✅ 이름 중복 처리: 완전 일치만 검사
+                var existing = _store.LoadAll();
+                deck.Name = _store.MakeUniqueName(deck.Name, existing);
 
-                StatusText.Text = $"저장됨: {SavedDeck.Name} (카드 {SavedDeck.Cards.Count}종)";
-                DialogResult = true;   // 모달로 열었을 때 결과 반환
+                // ✅ 덮어쓰기 금지: 무조건 새 덱 추가
+                SavedDeck = _store.Add(deck);
+
+                if (SavedDeck.Name != originalName)
+                    StatusText.Text = $"이름 중복 → '{SavedDeck.Name}'로 저장됨";
+                else
+                    StatusText.Text = $"저장됨: {SavedDeck.Name}";
+                        DialogResult = true;
                 Close();
             }
             catch (Exception ex)
@@ -38,6 +46,7 @@ namespace HearthStoneDT.UI.Views
                 MessageBox.Show(ex.ToString(), "덱 저장 실패");
             }
         }
+
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {

@@ -35,6 +35,30 @@ namespace HearthStoneDT.UI.Decks
                 return new List<DeckDefinition>();
             }
         }
+        public DeckDefinition Add(DeckDefinition deck)
+        {
+            var decks = LoadAll();
+            decks.Add(deck);
+            SaveAll(decks);
+            return deck;
+        }
+
+        public string MakeUniqueName(string name, IEnumerable<DeckDefinition> existing)
+        {
+            // ✅ 완전 일치가 없으면 그대로 저장
+            if (!existing.Any(d => d.Name == name))
+                return name;
+
+            // ✅ 완전 일치가 있으면 그때만 뒤에 (n) 붙임
+            int n = 2;
+            while (true)
+            {
+                string candidate = $"{name} ({n})";
+                if (!existing.Any(d => d.Name == candidate))
+                    return candidate;
+                n++;
+            }
+        }
 
         public void SaveAll(List<DeckDefinition> decks)
         {
