@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using HearthStoneDT.UI.GameEvents;
 
-namespace HearthStoneDT.UI.GameEvents
+namespace HearthStoneDT.UI.Parser
 {
     public sealed class PowerLogParser
     {
@@ -108,6 +109,14 @@ namespace HearthStoneDT.UI.GameEvents
 
                 return;
             }
+        }
+        public void Reset()
+        {
+            _zoneByEntity.Clear();
+            _controllerByEntity.Clear();
+            _cardIdByEntity.Clear();
+            _pendingExit.Clear();
+            _pendingEnter.Clear();
         }
 
         private void SetCardId(int entityId, string cardId)
