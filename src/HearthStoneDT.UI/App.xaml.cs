@@ -38,6 +38,10 @@ namespace HearthStoneDT.UI
                 Logs.BindAutoDeckReset(Overlays, () => CurrentSelectedDeck);
                 Logs.Start();
                 // 안정 모드: 게임 세션 시작(Gameplay.Start)마다 선택된 덱으로 오버레이를 재초기화
+
+                // Power.log 기반 덱 변화(드로우/서치/덱복귀)를 오버레이에 반영
+                Logs.CardRemovedFromDeck += cardId => Overlays.ApplyCardRemovedFromDeck(cardId);
+                Logs.CardAddedToDeck += cardId => Overlays.ApplyCardAddedToDeck(cardId);
                 
             }
             catch (Exception ex)

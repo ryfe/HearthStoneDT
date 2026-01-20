@@ -70,9 +70,24 @@ namespace HearthStoneDT.UI.Views
                     int count = kv.Value;
 
                     if (cardDb.TryGet(dbfId, out var info))
-                        _cards.Add(new DeckCard { Name = info.NameKo, Cost = info.Cost, Count = count, Rarity = info.Rarity });
+                        _cards.Add(new DeckCard
+                        {
+                            DbfId = dbfId,
+                            CardId = info.CardId,
+                            Name = info.NameKo,
+                            Cost = info.Cost,
+                            Count = count,
+                            Rarity = info.Rarity
+                        });
                     else
-                        _cards.Add(new DeckCard { Name = $"알 수 없는 카드(dbfId={dbfId})", Cost = 0, Count = count });
+                        _cards.Add(new DeckCard
+                        {
+                            DbfId = dbfId,
+                            CardId = "",
+                            Name = $"알 수 없는 카드(dbfId={dbfId})",
+                            Cost = 0,
+                            Count = count
+                        });
                 }
 
                 var sorted = _cards.OrderBy(x => x.Cost).ThenBy(x => x.Name).ToList();
@@ -109,6 +124,9 @@ namespace HearthStoneDT.UI.Views
             item.Count--;
             if (item.Count <= 0) _cards.Remove(item);
 
+            // DeckCard가 INotifyPropertyChanged가 아니라서 강제 갱신
+            _cardsView?.Refresh();
+
             DeckCountText.Text = $"{_cards.Sum(x => x.Count)}장";
         }
 
@@ -118,6 +136,7 @@ namespace HearthStoneDT.UI.Views
             if (item != null)
             {
                 item.Count++;
+                _cardsView?.Refresh();
                 DeckCountText.Text = $"{_cards.Sum(x => x.Count)}장";
                 return;
             }
@@ -133,6 +152,8 @@ namespace HearthStoneDT.UI.Views
                 Count = 1,
                 Rarity = info.Rarity
             });
+
+            _cardsView?.Refresh();
 
             DeckCountText.Text = $"{_cards.Sum(x => x.Count)}장";
         }

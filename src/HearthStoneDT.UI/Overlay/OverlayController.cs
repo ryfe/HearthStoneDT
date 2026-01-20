@@ -119,6 +119,32 @@ namespace HearthStoneDT.UI.Overlay
             _deckWindow.SetInteractive(false);
         }
 
+        /// <summary>
+        /// 로그 이벤트로 덱 카운트를 갱신한다. DeckWindow가 아직 없으면(오버레이를 한 번도 띄운 적 없으면)
+        /// 일단 무시한다. (원하면 EnsureDeckWindow()로 생성만 해도 되지만, 사용자가 원치 않을 수 있어 보수적으로 둠)
+        /// </summary>
+        public void ApplyCardRemovedFromDeck(string cardId)
+        {
+            if (_deckWindow == null)
+                return;
+
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                _deckWindow.RemoveFromDeck(cardId);
+            });
+        }
+
+        public void ApplyCardAddedToDeck(string cardId)
+        {
+            if (_deckWindow == null)
+                return;
+
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                _deckWindow.AddToDeck(cardId, CardDb);
+            });
+        }
+
 
         public void Dispose()
         {
