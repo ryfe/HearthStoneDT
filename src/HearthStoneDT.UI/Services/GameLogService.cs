@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 using HearthStoneDT.UI.Decks;
 using HearthStoneDT.UI.Overlay;
@@ -21,6 +22,11 @@ namespace HearthStoneDT.UI.Services
         private LoadingScreenParser? _loadingParser;
         private PowerLogParser? _powerParser;
         private string? _logDirectory;
+        private string? _currentLogDirectory;
+        private string? _logRoot;
+        private FileSystemWatcher? _rootWatcher;
+        private Timer? _rootPollTimer;
+        private readonly object _switchLock = new();
         // 하이브리드: 세션 시작 시(LoadingScreen Gameplay.Start) 선택된 덱을 오버레이에 다시 세팅
         private OverlayController? _autoResetOverlays;
         private Func<DeckDefinition?>? _autoResetGetDeck;
@@ -42,12 +48,25 @@ namespace HearthStoneDT.UI.Services
             if (_watch != null)
                 return;
 
-            var logDir = _logDirectory ?? HearthstoneLogPathResolver.ResolveLogDirectory();
+            // 1) 로그 디렉터리 결정
+            var resolved = _logDirectory != null
+                ? (Root: Path.GetDirectoryName(_logDirectory), LogDir: _logDirectory)
+                : HearthstoneLogPathResolver.ResolveRootAndDirectory();
+
+            var logDir = resolved.LogDir;
+            _logRoot = resolved.Root;
+
             if (logDir == null)
                 throw new DirectoryNotFoundException("Hearthstone Logs 폴더를 찾지 못했습니다.");
 
+            _currentLogDirectory = logDir;
+
             var power = Path.Combine(logDir, "Power.log");
             var loading = Path.Combine(logDir, "LoadingScreen.log");
+
+            DebugLog.Write($"[START] logDir={logDir}");
+            DebugLog.Write($"[START] power={power}");
+            DebugLog.Write($"[START] loading={loading}");
 
             _loadingParser = new LoadingScreenParser();
             _powerParser = new PowerLogParser(this);
@@ -76,19 +95,127 @@ namespace HearthStoneDT.UI.Services
                 }
             };
 
-            _watch = new LogWatchManager(power, loading);
-            _watch.OnNewLines += OnNewLines;
-            _watch.Start(pollInterval ?? TimeSpan.FromMilliseconds(200));
+
+            StartWatchersForDirectory(logDir, pollInterval ?? TimeSpan.FromMilliseconds(200));
+
+            // 2) HS가 실행/재실행 될 때 Logs\Hearthstone_yyyy... 폴더가 새로 생기는 구조를 지원
+            // - 새 폴더 생성 이벤트를 감시해서 최신 폴더로 자동 전환
+            // - 이벤트를 못 받는 환경 대비, 주기적으로도 확인
+            TryStartRootWatcher();
         }
 
         public void SetLogDirectory(string logDirectory)
         {
             _logDirectory = logDirectory;
         }
+
+        private void StartWatchersForDirectory(string logDir, TimeSpan pollInterval)
+        {
+            var power = Path.Combine(logDir, "Power.log");
+            var loading = Path.Combine(logDir, "LoadingScreen.log");
+
+            DebugLog.Write($"[WATCH] switchTo={logDir}");
+            DebugLog.Write($"[WATCH] power={power}");
+            DebugLog.Write($"[WATCH] loading={loading}");
+
+            _watch = new LogWatchManager(power, loading);
+            _watch.OnNewLines += OnNewLines;
+            _watch.Start(pollInterval);
+        }
+
+        private void TryStartRootWatcher()
+        {
+            if (_logRoot == null)
+                return;
+            if (!Directory.Exists(_logRoot))
+                return;
+            if (_rootWatcher != null)
+                return;
+
+            try
+            {
+                _rootWatcher = new FileSystemWatcher(_logRoot)
+                {
+                    IncludeSubdirectories = false,
+                    NotifyFilter = NotifyFilters.DirectoryName | NotifyFilters.CreationTime,
+                    Filter = "Hearthstone_*",
+                    EnableRaisingEvents = true
+                };
+                _rootWatcher.Created += (_, __) => TrySwitchToLatestLogDirectory();
+                _rootWatcher.Renamed += (_, __) => TrySwitchToLatestLogDirectory();
+
+                // 폴링 백업(2초)
+                _rootPollTimer = new Timer(_ => TrySwitchToLatestLogDirectory(), null, 2000, 2000);
+
+                DebugLog.Write($"[ROOT_WATCH] root={_logRoot}");
+            }
+            catch (Exception ex)
+            {
+                DebugLog.Write($"[ROOT_WATCH_ERR] {ex.GetType().Name}: {ex.Message}");
+            }
+        }
+
+        private void TrySwitchToLatestLogDirectory()
+        {
+            // 이미 Start가 끝나고 Watcher가 살아있는 상태에서만 전환
+            if (_watch == null || _logRoot == null)
+                return;
+
+            string? latest = null;
+            try
+            {
+                latest = HearthstoneLogPathResolver.TryGetLatestChildWithLogs(_logRoot);
+            }
+            catch
+            {
+                return;
+            }
+
+            if (latest == null)
+                return;
+
+            lock (_switchLock)
+            {
+                if (_currentLogDirectory != null && string.Equals(_currentLogDirectory, latest, StringComparison.OrdinalIgnoreCase))
+                    return;
+
+                // 아직 파일이 생성 중일 수 있어서 잠깐 기다리며 확인
+                for (int i = 0; i < 10; i++)
+                {
+                    if (HearthstoneLogPathResolver.HasLogs(latest))
+                        break;
+                    Thread.Sleep(100);
+                }
+                if (!HearthstoneLogPathResolver.HasLogs(latest))
+                    return;
+
+                DebugLog.Write($"[SWITCH] {_currentLogDirectory} -> {latest}");
+
+                // 기존 watcher 중지
+                try
+                {
+                    _watch.OnNewLines -= OnNewLines;
+                    _watch.StopAsync().GetAwaiter().GetResult();
+                }
+                catch
+                {
+                    // best-effort
+                }
+                _watch = null;
+
+                _currentLogDirectory = latest;
+                StartWatchersForDirectory(latest, TimeSpan.FromMilliseconds(200));
+            }
+        }
         private void OnNewLines(System.Collections.Generic.IReadOnlyList<LogLine> lines)
         {
             if (_loadingParser == null || _powerParser == null)
                 return;
+
+            if (lines.Count > 0)
+            {
+                DebugLog.Write($"[LINES] count={lines.Count} first={lines[0].Source}@{lines[0].Time:HH:mm:ss.fff} last={lines[^1].Source}@{lines[^1].Time:HH:mm:ss.fff}");
+            }
 
             foreach (var l in lines)
             {
@@ -113,6 +240,15 @@ namespace HearthStoneDT.UI.Services
             _watch = null;
             _loadingParser = null;
             _powerParser = null;
+
+            try
+            {
+                _rootWatcher?.Dispose();
+                _rootWatcher = null;
+                _rootPollTimer?.Dispose();
+                _rootPollTimer = null;
+            }
+            catch { }
         }
 
         public void Dispose()
@@ -121,8 +257,17 @@ namespace HearthStoneDT.UI.Services
         }
 
         // IGameEventSink
-        public void OnCardRemovedFromDeck(string cardId) => CardRemovedFromDeck?.Invoke(cardId);
-        public void OnCardAddedToDeck(string cardId) => CardAddedToDeck?.Invoke(cardId);
+        public void OnCardRemovedFromDeck(string cardId)
+        {
+            DebugLog.Write($"[EVENT] RemovedFromDeck cardId={cardId}");
+            CardRemovedFromDeck?.Invoke(cardId);
+        }
+
+        public void OnCardAddedToDeck(string cardId)
+        {
+            DebugLog.Write($"[EVENT] AddedToDeck cardId={cardId}");
+            CardAddedToDeck?.Invoke(cardId);
+        }
 
         /// <summary>
         /// Windows 기본 설치 경로 기준으로 Logs 폴더를 찾는다.

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using HearthStoneDT.UI.Logs;
 
 namespace HearthStoneDT.UI.GameEvents
 {
@@ -100,11 +101,8 @@ namespace HearthStoneDT.UI.GameEvents
             _zoneByEntity.TryGetValue(entityId, out var oldZone);
             _zoneByEntity[entityId] = newZone;
 
-            // MyControllerId가 정해지면 그 컨트롤러만, 아니면 전부 처리
-            if (!_controllerByEntity.TryGetValue(entityId, out var ctrl))
-                return;
-            if (MyControllerId.HasValue && ctrl != MyControllerId.Value)
-                return;
+            // 컨트롤러는 zone 변경 뒤에 올 수도 있다.
+            _controllerByEntity.TryGetValue(entityId, out var ctrl);
 
             // oldZone이 비어있으면 첫 값이라 비교 불가
             if (string.IsNullOrWhiteSpace(oldZone))
@@ -112,8 +110,18 @@ namespace HearthStoneDT.UI.GameEvents
 
             if (oldZone == "DECK" && newZone != "DECK")
             {
+                // 디버그: 덱에서 나감(드로우/서치/생성 등 전부)
+                DebugLog.Write($"[DECK_EXIT_DETECTED] entity={entityId} {oldZone}->{newZone} ctrl={(ctrl == 0 ? "?" : ctrl.ToString())} hasCardId={_cardIdByEntity.ContainsKey(entityId)} line={line}");
+
+                // 내 컨트롤러가 정해져 있고, 컨트롤러가 이미 알려졌는데 다르면 이벤트를 발생시키지 않는다(디버그 로그는 남김).
+                if (MyControllerId.HasValue && ctrl != 0 && ctrl != MyControllerId.Value)
+                    return;
+
                 if (_cardIdByEntity.TryGetValue(entityId, out var cardId) && !string.IsNullOrWhiteSpace(cardId))
+                {
+                    DebugLog.Write($"[EVENT] RemovedFromDeck cardId={cardId}");
                     _sink.OnCardRemovedFromDeck(cardId);
+                }
                 else
                     _pendingExit.Add(entityId);
 
@@ -122,8 +130,14 @@ namespace HearthStoneDT.UI.GameEvents
 
             if (oldZone != "DECK" && newZone == "DECK")
             {
+                if (MyControllerId.HasValue && ctrl != 0 && ctrl != MyControllerId.Value)
+                    return;
+
                 if (_cardIdByEntity.TryGetValue(entityId, out var cardId) && !string.IsNullOrWhiteSpace(cardId))
+                {
+                    DebugLog.Write($"[EVENT] AddedToDeck cardId={cardId}");
                     _sink.OnCardAddedToDeck(cardId);
+                }
                 else
                     _pendingEnter.Add(entityId);
 
@@ -136,11 +150,28 @@ namespace HearthStoneDT.UI.GameEvents
             _cardIdByEntity[entityId] = cardId;
 
             // pending 처리
-            if (_pendingExit.Remove(entityId))
-                _sink.OnCardRemovedFromDeck(cardId);
+            if (_pendingExit.Contains(entityId))
+            {
+                // 컨트롤러가 아직 없을 수 있으니 여기서도 필터링
+                _controllerByEntity.TryGetValue(entityId, out var ctrl);
+                if (!MyControllerId.HasValue || ctrl == 0 || ctrl == MyControllerId.Value)
+                {
+                    _pendingExit.Remove(entityId);
+                    DebugLog.Write($"[EVENT] RemovedFromDeck(pending) entity={entityId} ctrl={(ctrl == 0 ? "?" : ctrl.ToString())} cardId={cardId}");
+                    _sink.OnCardRemovedFromDeck(cardId);
+                }
+            }
 
-            if (_pendingEnter.Remove(entityId))
-                _sink.OnCardAddedToDeck(cardId);
+            if (_pendingEnter.Contains(entityId))
+            {
+                _controllerByEntity.TryGetValue(entityId, out var ctrl);
+                if (!MyControllerId.HasValue || ctrl == 0 || ctrl == MyControllerId.Value)
+                {
+                    _pendingEnter.Remove(entityId);
+                    DebugLog.Write($"[EVENT] AddedToDeck(pending) entity={entityId} ctrl={(ctrl == 0 ? "?" : ctrl.ToString())} cardId={cardId}");
+                    _sink.OnCardAddedToDeck(cardId);
+                }
+            }
         }
 
         private static bool TryGetEntityId(string entityToken, out int id)

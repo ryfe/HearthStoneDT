@@ -7,6 +7,7 @@ using HearthStoneDT.UI.Overlay;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
 using System.Windows.Data;
+using HearthStoneDT.UI.Logs;
 
 
 
@@ -118,11 +119,18 @@ namespace HearthStoneDT.UI.Views
         
         public void RemoveFromDeck(string cardId)
         {
+            DebugLog.Write($"[REMOVE_CALL] cardId={cardId}");
             var item = _cards.FirstOrDefault(x => x.CardId.Equals(cardId, StringComparison.OrdinalIgnoreCase));
-            if (item == null) return;
+            if (item == null)
+            {
+                DebugLog.Write($"[REMOVE_FAIL] not found cardId={cardId}");
+                return;
+            }
 
             item.Count--;
             if (item.Count <= 0) _cards.Remove(item);
+
+            DebugLog.Write($"[REMOVE_OK] cardId={cardId} newCount={(item.Count)} remainingTotal={_cards.Sum(x => x.Count)}");
 
             // DeckCard가 INotifyPropertyChanged가 아니라서 강제 갱신
             _cardsView?.Refresh();
