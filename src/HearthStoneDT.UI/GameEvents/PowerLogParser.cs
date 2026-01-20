@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using HearthStoneDT.UI.GameEvents;
 
-namespace HearthStoneDT.UI.Parser
+namespace HearthStoneDT.UI.GameEvents
 {
     public sealed class PowerLogParser
     {
@@ -36,9 +35,28 @@ namespace HearthStoneDT.UI.Parser
         private readonly HashSet<int> _pendingExit = new();
         private readonly HashSet<int> _pendingEnter = new();
 
+        // HDT처럼 "내 플레이어" 컨트롤러를 결정한 뒤 그 값으로 필터링할 수 있게 둔다.
+        // null이면(아직 모르면) 모든 controller를 처리해서 초기 디버깅이 가능하게 한다.
+        public int? MyControllerId { get; private set; }
+
         public PowerLogParser(IGameEventSink sink)
         {
             _sink = sink;
+        }
+
+        public void Reset()
+        {
+            _zoneByEntity.Clear();
+            _controllerByEntity.Clear();
+            _cardIdByEntity.Clear();
+            _pendingExit.Clear();
+            _pendingEnter.Clear();
+            MyControllerId = null;
+        }
+
+        public void SetMyControllerId(int controllerId)
+        {
+            MyControllerId = controllerId;
         }
 
         public void FeedLine(string line)
@@ -82,8 +100,10 @@ namespace HearthStoneDT.UI.Parser
             _zoneByEntity.TryGetValue(entityId, out var oldZone);
             _zoneByEntity[entityId] = newZone;
 
-            // controller가 1(내 카드)인 것만 처리
-            if (!_controllerByEntity.TryGetValue(entityId, out var ctrl) || ctrl != 1)
+            // MyControllerId가 정해지면 그 컨트롤러만, 아니면 전부 처리
+            if (!_controllerByEntity.TryGetValue(entityId, out var ctrl))
+                return;
+            if (MyControllerId.HasValue && ctrl != MyControllerId.Value)
                 return;
 
             // oldZone이 비어있으면 첫 값이라 비교 불가
@@ -109,14 +129,6 @@ namespace HearthStoneDT.UI.Parser
 
                 return;
             }
-        }
-        public void Reset()
-        {
-            _zoneByEntity.Clear();
-            _controllerByEntity.Clear();
-            _cardIdByEntity.Clear();
-            _pendingExit.Clear();
-            _pendingEnter.Clear();
         }
 
         private void SetCardId(int entityId, string cardId)

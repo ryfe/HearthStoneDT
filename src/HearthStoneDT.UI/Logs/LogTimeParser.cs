@@ -1,33 +1,58 @@
 using System;
-using System.Text.RegularExpressions;
+using System.Globalization;
 
 namespace HearthStoneDT.UI.Logs
 {
+    /// <summary>
+    /// Hearthstone 로그 라인 앞부분의 시간을 파싱한다.
+    /// 예: "D 12:34:56.789 ..."
+    /// 날짜 정보가 없어서, 기준 날짜(baseDate)에 시간을 얹어 만든다.
+    /// 자정 롤오버 보정을 위해 lastTime을 넣으면 더 안정적이다.
+    /// </summary>
     public static class LogTimeParser
     {
-        private static readonly Regex Rx =
-            new(@"^\s*D\s+(?<hh>\d{2}):(?<mm>\d{2}):(?<ss>\d{2})\.(?<ms>\d{3})\s+",
-                RegexOptions.Compiled);
-
-        public static DateTime ParseOrNow(string line, DateTime now, ref DateTime? last)
+        public static bool TryParseTimestamp(string rawLine, DateTime baseDate, DateTime? lastTime, out DateTime timestamp)
         {
-            var m = Rx.Match(line);
-            if (!m.Success)
-                return now;
+            timestamp = default;
 
-            int hh = int.Parse(m.Groups["hh"].Value);
-            int mm = int.Parse(m.Groups["mm"].Value);
-            int ss = int.Parse(m.Groups["ss"].Value);
-            int ms = int.Parse(m.Groups["ms"].Value);
+            if (string.IsNullOrWhiteSpace(rawLine))
+                return false;
 
-            var dt = new DateTime(now.Year, now.Month, now.Day, hh, mm, ss, ms, now.Kind);
+            // 대부분 "D "로 시작
+            if (rawLine.Length < 14)
+                return false;
 
-            // 자정 rollover
-            if (last.HasValue && dt < last.Value.AddHours(-6))
-                dt = dt.AddDays(1);
+            // "D 12:34:56.789" 또는 "D 12:34:56"
+            // 인덱스 2부터가 시간
+            var span = rawLine.AsSpan();
+            if (span[0] != 'D' && span[0] != 'W' && span[0] != 'E')
+                return false;
+            if (span[1] != ' ')
+                return false;
 
-            last = dt;
-            return dt;
+            // 최대 12자리 정도 잘라서 TryParse
+            // HH:mm:ss.fff (12) / HH:mm:ss (8)
+            var timePart = span.Slice(2, Math.Min(12, span.Length - 2)).ToString();
+
+            TimeSpan time;
+            if (!TimeSpan.TryParseExact(timePart, "hh\\:mm\\:ss\\.fff", CultureInfo.InvariantCulture, out time)
+                && !TimeSpan.TryParseExact(timePart, "hh\\:mm\\:ss", CultureInfo.InvariantCulture, out time))
+            {
+                return false;
+            }
+
+            var candidate = baseDate.Date + time;
+
+            // 자정 롤오버 보정: 시간이 과거로 크게 점프하면 다음날로 간주
+            if (lastTime.HasValue)
+            {
+                // 6시간 이상 과거로 튀면 롤오버로 판단(너무 타이트하면 오탐)
+                if (candidate < lastTime.Value.AddHours(-6))
+                    candidate = candidate.AddDays(1);
+            }
+
+            timestamp = candidate;
+            return true;
         }
     }
 }

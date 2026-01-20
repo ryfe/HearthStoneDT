@@ -132,3 +132,7 @@
    at System.Windows.Threading.ExceptionWrapper.InternalRealCall(Delegate callback, Object args, Int32 numArgs)
    at System.Windows.Threading.ExceptionWrapper.TryCatchWhen(Object source, Delegate callback, Object args, Int32 numArgs, Delegate catchHandler)
 
+[2026-01-20 오후 1:31:17] System.IO.DirectoryNotFoundException: Hearthstone Logs 폴더를 찾지 못했습니다.
+   at HearthStoneDT.UI.Services.GameLogService.Start(Nullable`1 pollInterval) in C:\HearthStoneDT\src\HearthStoneDT.UI\Services\GameLogService.cs:line 47
+   at HearthStoneDT.UI.App.Application_Startup(Object sender, StartupEventArgs e) in C:\HearthStoneDT\src\HearthStoneDT.UI\App.xaml.cs:line 31
+

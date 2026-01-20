@@ -65,6 +65,9 @@ namespace HearthStoneDT.UI.Views
             var d = DeckList.SelectedItem as DeckDefinition;
             if (d == null) return;
 
+            // 로그 세션 시작 시(LoadingScreen Gameplay.Start) 오버레이 재설정에 사용
+            App.CurrentSelectedDeck = d;
+
             if (string.IsNullOrWhiteSpace(d.DeckCode))
             {
                 StatusText.Text = "덱 코드가 없습니다.";
