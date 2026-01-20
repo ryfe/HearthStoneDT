@@ -13,6 +13,16 @@
         MouseLeftButtonDown="DeckWindow_MouseLeftButtonDown">
         <overlay:ToggleableOverlayBase.Resources>
             <conv:RarityToBrushConverter x:Key="RarityBrush"/>
+
+            <!-- Keep rarity color, but dim cards that have Count==0 (white->gray, blue->gray-blue, etc.) -->
+            <Style x:Key="DimWhenZero" TargetType="TextBlock">
+                <Setter Property="Opacity" Value="1"/>
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding Count}" Value="0">
+                        <Setter Property="Opacity" Value="0.45"/>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
         </overlay:ToggleableOverlayBase.Resources>
     <Border Background="#CC111111" CornerRadius="10" Padding="10">
         <DockPanel>
@@ -45,14 +55,17 @@
                                     <ColumnDefinition Width="30"/>
                                 </Grid.ColumnDefinitions>
 
-                                <TextBlock Grid.Column="0" Text="{Binding Cost}" Foreground="#9CDCFE" FontWeight="SemiBold"/>
+                                <TextBlock Grid.Column="0" Text="{Binding Cost}" Foreground="#9CDCFE" FontWeight="SemiBold"
+                                           Style="{StaticResource DimWhenZero}"/>
                                 <TextBlock Grid.Column="1"
                                         Text="{Binding Name}"
                                         Foreground="{Binding Rarity, Converter={StaticResource RarityBrush}}"
                                         Margin="6,0,8,0"
-                                        TextTrimming="CharacterEllipsis"/>
+                                        TextTrimming="CharacterEllipsis"
+                                        Style="{StaticResource DimWhenZero}"/>
                                 <TextBlock Grid.Column="2" Text="{Binding Count}" Foreground="#E6E6E6"
-                                        HorizontalAlignment="Right" FontWeight="SemiBold"/>
+                                        HorizontalAlignment="Right" FontWeight="SemiBold"
+                                        Style="{StaticResource DimWhenZero}"/>
                             </Grid>
                         </Border>
                     </DataTemplate>

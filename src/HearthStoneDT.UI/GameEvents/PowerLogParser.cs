@@ -5,121 +5,192 @@ using HearthStoneDT.UI.Logs;
 
 namespace HearthStoneDT.UI.GameEvents
 {
+    /// <summary>
+    /// HDT-style parser:
+    /// - Treats TAG_CHANGE as the primary change stream.
+    /// - Additionally consumes creation tags inside SHOW_ENTITY / FULL_ENTITY blocks ("tag=... value=...").
+    /// - Maintains per-entity previous tag values so that we can detect DECK -> (not DECK) immediately.
+    /// </summary>
     public sealed class PowerLogParser
     {
-        // TAG_CHANGE Entity=... tag=ZONE value=...
-        private static readonly Regex TagChangeZone =
-            new(@"TAG_CHANGE\s+Entity=(?<entity>.+?)\s+tag=ZONE\s+value=(?<zone>\w+)", RegexOptions.Compiled);
+        // TAG_CHANGE Entity=... tag=... value=...
+        // Power.log lines usually have a timestamp/prefix like:
+        // D 19:41:31.0599017 GameState.DebugPrintPower() -     TAG_CHANGE ...
+        // so we must match TAG_CHANGE anywhere in the line.
+        private static readonly Regex TagChangeRegex = new(
+            @".*\bTAG_CHANGE\s+Entity=(?<entity>.+?)\s+tag=(?<tag>\w+)\s+value=(?<value>.+?)\s*$",
+            RegexOptions.Compiled);
 
-        // TAG_CHANGE Entity=... tag=CONTROLLER value=1
-        private static readonly Regex TagChangeController =
-            new(@"TAG_CHANGE\s+Entity=(?<entity>.+?)\s+tag=CONTROLLER\s+value=(?<ctrl>\d+)", RegexOptions.Compiled);
+        // SHOW_ENTITY - Updating Entity=[... id=4 zone=DECK ...] CardID=VAC_420
+        // CHANGE_ENTITY - Updating Entity=[...] CardID=...
+        private static readonly Regex ShowOrChangeEntityRegex = new(
+            @".*\b(?<type>(SHOW_ENTITY|CHANGE_ENTITY))\s+-\s+Updating\s+Entity=(?<entity>.+?)\s+CardID=(?<cardid>\w*)",
+            RegexOptions.Compiled);
 
-        // SHOW_ENTITY - Updating Entity=[... ] CardID=CS2_004
-        private static readonly Regex ShowEntityCardId =
-            new(@"SHOW_ENTITY.*?Entity=(?<entity>.+?)\s+CardID=(?<cardid>[A-Z0-9_]+)", RegexOptions.Compiled);
+        // FULL_ENTITY - Creating ID=191 CardID=TLC_818
+        // FULL_ENTITY - Updating [entityName=... id=192 zone=SETASIDE ...] CardID=VAC_408
+        private static readonly Regex FullEntityRegex = new(
+            @".*\bFULL_ENTITY\s+-\s+(?<action>Creating|Updating)\s+(?<rest>.+?)\s+CardID=(?<cardid>\w*)",
+            RegexOptions.Compiled);
 
-        // FULL_ENTITY - Creating ID=... CardID=...
-        private static readonly Regex FullEntityCardId =
-            new(@"FULL_ENTITY.*?ID=(?<id>\d+).*?CardID=(?<cardid>[A-Z0-9_]+)", RegexOptions.Compiled);
+        // Creation tag lines inside SHOW_ENTITY/FULL_ENTITY blocks:
+        //     tag=ZONE value=HAND
+        // Creation tag lines appear like:
+        // D .. DebugPrintPower() -         tag=ZONE value=HAND
+        // (Note: do NOT confuse with TAG_CHANGE lines.)
+        private static readonly Regex CreationTagRegex = new(
+            @".*-\s+tag=(?<tag>\w+)\s+value=(?<value>.+?)\s*$",
+            RegexOptions.Compiled);
 
-        // Entity=... 에서 entityId 뽑기 (가장 흔한 형태: [entityName id=64 zone=...])
-        private static readonly Regex EntityIdInBracket =
-            new(@"\bid=(?<id>\d+)\b", RegexOptions.Compiled);
+        // Extract id / zone from bracket entity token: [entityName=... id=47 zone=PLAY ...]
+        private static readonly Regex EntityIdInBracket = new(@"\bid=(?<id>\d+)\b", RegexOptions.Compiled);
+        private static readonly Regex ZoneInBracket = new(@"\bzone=(?<zone>\w+)\b", RegexOptions.Compiled);
+
+        // FULL_ENTITY Creating has "ID=123" form.
+        private static readonly Regex FullEntityIdRegex = new(@"\bID=(?<id>\d+)\b", RegexOptions.Compiled);
 
         private readonly IGameEventSink _sink;
 
-        private readonly Dictionary<int, string> _zoneByEntity = new();
-        private readonly Dictionary<int, int> _controllerByEntity = new();
-        private readonly Dictionary<int, string> _cardIdByEntity = new();
+        // Current packet entity (for creation tag lines)
+        private int _currentEntityId;
 
+        // Current known values
+        private readonly Dictionary<int, string> _cardIdByEntity = new();
+        private readonly Dictionary<int, int> _controllerByEntity = new();
+
+        // Tag storage (only what we need: ZONE, but keeping generic allows extension)
+        private readonly Dictionary<(int entityId, string tag), string> _tagValues = new();
+
+        // If a DECK exit/enter happens before CardID is known, we queue by entityId.
         private readonly HashSet<int> _pendingExit = new();
         private readonly HashSet<int> _pendingEnter = new();
 
-        // HDT처럼 "내 플레이어" 컨트롤러를 결정한 뒤 그 값으로 필터링할 수 있게 둔다.
-        // null이면(아직 모르면) 모든 controller를 처리해서 초기 디버깅이 가능하게 한다.
+        // Optional: filter to player's controller.
         public int? MyControllerId { get; private set; }
 
-        public PowerLogParser(IGameEventSink sink)
-        {
-            _sink = sink;
-        }
+        public PowerLogParser(IGameEventSink sink) => _sink = sink;
 
         public void Reset()
         {
-            _zoneByEntity.Clear();
-            _controllerByEntity.Clear();
+            _currentEntityId = 0;
             _cardIdByEntity.Clear();
+            _controllerByEntity.Clear();
+            _tagValues.Clear();
             _pendingExit.Clear();
             _pendingEnter.Clear();
             MyControllerId = null;
         }
 
-        public void SetMyControllerId(int controllerId)
-        {
-            MyControllerId = controllerId;
-        }
+        public void SetMyControllerId(int controllerId) => MyControllerId = controllerId;
 
         public void FeedLine(string line)
         {
-            // 1) controller 업데이트
-            var mc = TagChangeController.Match(line);
-            if (mc.Success)
+            // 1) SHOW_ENTITY / CHANGE_ENTITY header (sets current entity + cardId)
+            var se = ShowOrChangeEntityRegex.Match(line);
+            if(se.Success)
             {
-                if (TryGetEntityId(mc.Groups["entity"].Value, out var id))
-                    _controllerByEntity[id] = int.Parse(mc.Groups["ctrl"].Value);
+                if(TryGetEntityId(se.Groups["entity"].Value, out var entityId))
+                {
+                    _currentEntityId = entityId;
+
+                    // Seed initial ZONE from the header "zone=..." so we can detect DECK->HAND when creation tags arrive.
+                    var headerZone = TryGetZoneFromEntityToken(se.Groups["entity"].Value);
+                    if(!string.IsNullOrWhiteSpace(headerZone))
+                        SetTag(entityId, "ZONE", headerZone, suppressActions: true);
+
+                    var cardId = se.Groups["cardid"].Value;
+                    if(!string.IsNullOrWhiteSpace(cardId))
+                        SetCardId(entityId, cardId);
+                }
                 return;
             }
 
-            // 2) cardId 업데이트 (SHOW_ENTITY / FULL_ENTITY)
-            var ms = ShowEntityCardId.Match(line);
-            if (ms.Success)
+            // 2) FULL_ENTITY header (sets current entity + cardId)
+            var fe = FullEntityRegex.Match(line);
+            if(fe.Success)
             {
-                if (TryGetEntityId(ms.Groups["entity"].Value, out var id))
-                    SetCardId(id, ms.Groups["cardid"].Value);
+                var rest = fe.Groups["rest"].Value;
+                int entityId = 0;
+
+                // Creating ID=###
+                var mid = FullEntityIdRegex.Match(rest);
+                if(mid.Success)
+                    entityId = int.Parse(mid.Groups["id"].Value);
+                else
+                    TryGetEntityId(rest, out entityId);
+
+                if(entityId != 0)
+                {
+                    _currentEntityId = entityId;
+                    var headerZone = TryGetZoneFromEntityToken(rest);
+                    if(!string.IsNullOrWhiteSpace(headerZone))
+                        SetTag(entityId, "ZONE", headerZone, suppressActions: true);
+
+                    var cardId = fe.Groups["cardid"].Value;
+                    if(!string.IsNullOrWhiteSpace(cardId))
+                        SetCardId(entityId, cardId);
+                }
                 return;
             }
 
-            var mf = FullEntityCardId.Match(line);
-            if (mf.Success)
+            // 3) Creation tag line inside SHOW_ENTITY / FULL_ENTITY blocks
+            var ct = CreationTagRegex.Match(line);
+            if(ct.Success && _currentEntityId != 0)
             {
-                var id = int.Parse(mf.Groups["id"].Value);
-                SetCardId(id, mf.Groups["cardid"].Value);
+                var tag = ct.Groups["tag"].Value;
+                var value = ct.Groups["value"].Value.Trim();
+                HandleTagChange(_currentEntityId, tag, value);
                 return;
             }
 
-            // 3) zone 변경 감지
-            var mz = TagChangeZone.Match(line);
-            if (!mz.Success)
-                return;
-
-            if (!TryGetEntityId(mz.Groups["entity"].Value, out var entityId))
-                return;
-
-            var newZone = mz.Groups["zone"].Value;
-
-            _zoneByEntity.TryGetValue(entityId, out var oldZone);
-            _zoneByEntity[entityId] = newZone;
-
-            // 컨트롤러는 zone 변경 뒤에 올 수도 있다.
-            _controllerByEntity.TryGetValue(entityId, out var ctrl);
-
-            // oldZone이 비어있으면 첫 값이라 비교 불가
-            if (string.IsNullOrWhiteSpace(oldZone))
-                return;
-
-            if (oldZone == "DECK" && newZone != "DECK")
+            // 4) TAG_CHANGE stream
+            var tc = TagChangeRegex.Match(line);
+            if(tc.Success)
             {
-                // 디버그: 덱에서 나감(드로우/서치/생성 등 전부)
-                DebugLog.Write($"[DECK_EXIT_DETECTED] entity={entityId} {oldZone}->{newZone} ctrl={(ctrl == 0 ? "?" : ctrl.ToString())} hasCardId={_cardIdByEntity.ContainsKey(entityId)} line={line}");
+                if(!TryGetEntityId(tc.Groups["entity"].Value, out var entityId))
+                    return;
+                var tag = tc.Groups["tag"].Value;
+                var value = tc.Groups["value"].Value.Trim();
+                HandleTagChange(entityId, tag, value);
+            }
+        }
 
-                // 내 컨트롤러가 정해져 있고, 컨트롤러가 이미 알려졌는데 다르면 이벤트를 발생시키지 않는다(디버그 로그는 남김).
-                if (MyControllerId.HasValue && ctrl != 0 && ctrl != MyControllerId.Value)
+        private void HandleTagChange(int entityId, string tag, string newValue)
+        {
+            // Controller tracking (needed for filtering)
+            if(tag == "CONTROLLER" && int.TryParse(newValue, out var controller))
+                _controllerByEntity[entityId] = controller;
+
+            // Maintain prev values
+            var key = (entityId, tag);
+            _tagValues.TryGetValue(key, out var prevValue);
+
+            // Store new
+            _tagValues[key] = newValue;
+
+            // Only actions we currently care about: ZONE changes
+            if(tag != "ZONE")
+                return;
+
+            // If we don't know prev zone yet, we can't detect a transition.
+            if(string.IsNullOrWhiteSpace(prevValue))
+                return;
+
+            var oldZone = prevValue;
+            var newZone = newValue;
+
+            // Deck remove/add definition (HDT style): based on prev zone.
+            if(oldZone == "DECK" && newZone != "DECK")
+            {
+                _controllerByEntity.TryGetValue(entityId, out var controller2);
+                DebugLog.Write($"[DECK_EXIT_DETECTED] entity={entityId} {oldZone}->{newZone} ctrl={(controller2 == 0 ? "?" : controller2.ToString())} hasCardId={_cardIdByEntity.ContainsKey(entityId)}");
+
+                if(MyControllerId.HasValue && controller2 != 0 && controller2 != MyControllerId.Value)
                     return;
 
-                if (_cardIdByEntity.TryGetValue(entityId, out var cardId) && !string.IsNullOrWhiteSpace(cardId))
+                if(_cardIdByEntity.TryGetValue(entityId, out var cardId) && !string.IsNullOrWhiteSpace(cardId))
                 {
-                    DebugLog.Write($"[EVENT] RemovedFromDeck cardId={cardId}");
+                    DebugLog.Write($"[EVENT] RemovedFromDeck cardId={cardId} zone={newZone}");
                     _sink.OnCardRemovedFromDeck(cardId);
                 }
                 else
@@ -128,33 +199,49 @@ namespace HearthStoneDT.UI.GameEvents
                 return;
             }
 
-            if (oldZone != "DECK" && newZone == "DECK")
+            if(oldZone != "DECK" && newZone == "DECK")
             {
-                if (MyControllerId.HasValue && ctrl != 0 && ctrl != MyControllerId.Value)
+                _controllerByEntity.TryGetValue(entityId, out var controller3);
+                if(MyControllerId.HasValue && controller3 != 0 && controller3 != MyControllerId.Value)
                     return;
 
-                if (_cardIdByEntity.TryGetValue(entityId, out var cardId) && !string.IsNullOrWhiteSpace(cardId))
+                if(_cardIdByEntity.TryGetValue(entityId, out var cardId) && !string.IsNullOrWhiteSpace(cardId))
                 {
                     DebugLog.Write($"[EVENT] AddedToDeck cardId={cardId}");
                     _sink.OnCardAddedToDeck(cardId);
                 }
                 else
                     _pendingEnter.Add(entityId);
+            }
+        }
 
+        private void SetTag(int entityId, string tag, string value, bool suppressActions)
+        {
+            var key = (entityId, tag);
+            if(!_tagValues.ContainsKey(key))
+            {
+                _tagValues[key] = value;
                 return;
             }
+
+            if(suppressActions)
+            {
+                _tagValues[key] = value;
+                return;
+            }
+
+            HandleTagChange(entityId, tag, value);
         }
 
         private void SetCardId(int entityId, string cardId)
         {
             _cardIdByEntity[entityId] = cardId;
 
-            // pending 처리
-            if (_pendingExit.Contains(entityId))
+            // Resolve pending events once cardId is known.
+            if(_pendingExit.Contains(entityId))
             {
-                // 컨트롤러가 아직 없을 수 있으니 여기서도 필터링
                 _controllerByEntity.TryGetValue(entityId, out var ctrl);
-                if (!MyControllerId.HasValue || ctrl == 0 || ctrl == MyControllerId.Value)
+                if(!MyControllerId.HasValue || ctrl == 0 || ctrl == MyControllerId.Value)
                 {
                     _pendingExit.Remove(entityId);
                     DebugLog.Write($"[EVENT] RemovedFromDeck(pending) entity={entityId} ctrl={(ctrl == 0 ? "?" : ctrl.ToString())} cardId={cardId}");
@@ -162,13 +249,13 @@ namespace HearthStoneDT.UI.GameEvents
                 }
             }
 
-            if (_pendingEnter.Contains(entityId))
+            if(_pendingEnter.Contains(entityId))
             {
-                _controllerByEntity.TryGetValue(entityId, out var ctrl);
-                if (!MyControllerId.HasValue || ctrl == 0 || ctrl == MyControllerId.Value)
+                _controllerByEntity.TryGetValue(entityId, out var ctrl2);
+                if(!MyControllerId.HasValue || ctrl2 == 0 || ctrl2 == MyControllerId.Value)
                 {
                     _pendingEnter.Remove(entityId);
-                    DebugLog.Write($"[EVENT] AddedToDeck(pending) entity={entityId} ctrl={(ctrl == 0 ? "?" : ctrl.ToString())} cardId={cardId}");
+                    DebugLog.Write($"[EVENT] AddedToDeck(pending) entity={entityId} ctrl={(ctrl2 == 0 ? "?" : ctrl2.ToString())} cardId={cardId}");
                     _sink.OnCardAddedToDeck(cardId);
                 }
             }
@@ -177,17 +264,21 @@ namespace HearthStoneDT.UI.GameEvents
         private static bool TryGetEntityId(string entityToken, out int id)
         {
             id = 0;
+            var raw = entityToken.Trim();
 
-            // 케이스1) FULL_ENTITY처럼 그냥 숫자 ID가 들어올 수도 있음
-            if (int.TryParse(entityToken.Trim(), out id))
+            // Case: plain numeric id
+            if(int.TryParse(raw, out id))
                 return true;
 
-            // 케이스2) [.. id=64 ..] 에서 id 파싱
-            var m = EntityIdInBracket.Match(entityToken);
-            if (!m.Success)
-                return false;
+            // Case: bracket token with id=###
+            var m = EntityIdInBracket.Match(raw);
+            return m.Success && int.TryParse(m.Groups["id"].Value, out id);
+        }
 
-            return int.TryParse(m.Groups["id"].Value, out id);
+        private static string TryGetZoneFromEntityToken(string entityToken)
+        {
+            var m = ZoneInBracket.Match(entityToken);
+            return m.Success ? m.Groups["zone"].Value : "";
         }
     }
 }

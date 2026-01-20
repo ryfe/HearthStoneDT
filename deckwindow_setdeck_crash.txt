@@ -1,4 +1,4 @@
 System.InvalidOperationException: 다른 스레드가 이 개체를 소유하고 있어 호출 스레드가 해당 개체에 액세스할 수 없습니다.
    at System.Windows.Threading.Dispatcher.<VerifyAccess>g__ThrowVerifyAccess|7_0()
    at System.Windows.DependencyObject.SetValue(DependencyProperty dp, Object value)
-   at HearthStoneDT.UI.Views.DeckWindow.SetDeckAsync(DeckDefinition deck, CardDb cardDb) in C:\HearthStoneDT\src\HearthStoneDT.UI\Views\DeckWindow.xaml.cs:line 53
+   at HearthStoneDT.UI.Views.DeckWindow.SetDeckAsync(DeckDefinition deck, CardDb cardDb) in C:\HearthStoneDT\src\HearthStoneDT.UI\Views\DeckWindow.xaml.cs:line 54
