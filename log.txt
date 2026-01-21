@@ -393,3 +393,599 @@
 2026-01-21 02:35:09.388 [LINES] count=3 first=LoadingScreen@02:35:09.209 last=LoadingScreen@02:35:09.209
 2026-01-21 02:35:10.424 [LINES] count=5 first=LoadingScreen@02:35:10.233 last=LoadingScreen@02:35:10.233
 2026-01-21 02:35:11.447 [LINES] count=1 first=LoadingScreen@02:35:11.241 last=LoadingScreen@02:35:11.241
+2026-01-21 10:46:05.443 [START] logDir=C:\Program Files (x86)\Hearthstone\Logs\Hearthstone_2026_01_21_02_29_36
+2026-01-21 10:46:05.447 [START] power=C:\Program Files (x86)\Hearthstone\Logs\Hearthstone_2026_01_21_02_29_36\Power.log
+2026-01-21 10:46:05.447 [START] loading=C:\Program Files (x86)\Hearthstone\Logs\Hearthstone_2026_01_21_02_29_36\LoadingScreen.log
+2026-01-21 10:46:05.449 [WATCH] switchTo=C:\Program Files (x86)\Hearthstone\Logs\Hearthstone_2026_01_21_02_29_36
+2026-01-21 10:46:05.449 [WATCH] power=C:\Program Files (x86)\Hearthstone\Logs\Hearthstone_2026_01_21_02_29_36\Power.log
+2026-01-21 10:46:05.449 [WATCH] loading=C:\Program Files (x86)\Hearthstone\Logs\Hearthstone_2026_01_21_02_29_36\LoadingScreen.log
+2026-01-21 10:46:05.481 [ROOT_WATCH] root=C:\Program Files (x86)\Hearthstone\Logs
+2026-01-21 10:46:11.918 [LINES] count=18 first=LoadingScreen@02:35:07.739 last=LoadingScreen@02:45:58.778
+2026-01-21 10:46:27.495 [SWITCH] C:\Program Files (x86)\Hearthstone\Logs\Hearthstone_2026_01_21_02_29_36 -> C:\Program Files (x86)\Hearthstone\Logs\Hearthstone_2026_01_21_10_45_19
+2026-01-21 10:46:27.497 [WATCH] switchTo=C:\Program Files (x86)\Hearthstone\Logs\Hearthstone_2026_01_21_10_45_19
+2026-01-21 10:46:27.497 [WATCH] power=C:\Program Files (x86)\Hearthstone\Logs\Hearthstone_2026_01_21_10_45_19\Power.log
+2026-01-21 10:46:27.498 [WATCH] loading=C:\Program Files (x86)\Hearthstone\Logs\Hearthstone_2026_01_21_10_45_19\LoadingScreen.log
+2026-01-21 10:46:27.555 [LINES] count=854 first=LoadingScreen@10:46:25.469 last=Power@10:46:26.226
+2026-01-21 10:46:27.625 [INFO] Auto-detected MyControllerId=1 (PlayerID=1)
+2026-01-21 10:46:27.628 [EVENT] RemovedFromDeck entity=20 cardId=VAC_521 zone=HAND
+2026-01-21 10:46:27.628 [EVENT] RemovedFromDeck cardId=VAC_521
+2026-01-21 10:46:27.629 [REMOVE_CALL] cardId=VAC_521
+2026-01-21 10:46:27.630 [REMOVE_OK] cardId=VAC_521 newCount=1 remainingTotal=29
+2026-01-21 10:46:27.632 [EVENT] RemovedFromDeck entity=27 cardId=TOY_354 zone=HAND
+2026-01-21 10:46:27.633 [EVENT] RemovedFromDeck cardId=TOY_354
+2026-01-21 10:46:27.641 [REMOVE_CALL] cardId=TOY_354
+2026-01-21 10:46:27.641 [REMOVE_OK] cardId=TOY_354 newCount=1 remainingTotal=28
+2026-01-21 10:46:27.643 [EVENT] RemovedFromDeck entity=16 cardId=VAC_410 zone=HAND
+2026-01-21 10:46:27.644 [EVENT] RemovedFromDeck cardId=VAC_410
+2026-01-21 10:46:27.655 [REMOVE_CALL] cardId=VAC_410
+2026-01-21 10:46:27.656 [REMOVE_OK] cardId=VAC_410 newCount=1 remainingTotal=27
+2026-01-21 10:46:27.657 [EVENT] AddedToDeck entity=16 cardId=VAC_410
+2026-01-21 10:46:27.658 [EVENT] AddedToDeck cardId=VAC_410
+2026-01-21 10:46:29.107 [LINES] count=2 first=LoadingScreen@10:46:28.934 last=LoadingScreen@10:46:29.083
+2026-01-21 10:46:29.942 [LINES] count=135 first=Power@10:46:29.883 last=Power@10:46:29.899
+2026-01-21 10:46:29.943 [EVENT] RemovedFromDeck entity=4 cardId=VAC_338 zone=HAND
+2026-01-21 10:46:29.943 [EVENT] RemovedFromDeck cardId=VAC_338
+2026-01-21 10:46:29.944 [REMOVE_CALL] cardId=VAC_338
+2026-01-21 10:46:29.944 [REMOVE_OK] cardId=VAC_338 newCount=1 remainingTotal=27
+2026-01-21 10:46:30.364 [LINES] count=25 first=Power@10:46:30.312 last=Power@10:46:30.326
+2026-01-21 10:46:32.008 [LINES] count=2 first=LoadingScreen@10:46:31.877 last=LoadingScreen@10:46:31.877
+2026-01-21 10:46:33.036 [LINES] count=5 first=LoadingScreen@10:46:32.892 last=LoadingScreen@10:46:32.892
+2026-01-21 10:46:34.075 [LINES] count=1 first=LoadingScreen@10:46:33.899 last=LoadingScreen@10:46:33.899
+2026-01-21 10:46:55.839 [LINES] count=4 first=Power@10:46:55.641 last=Power@10:46:55.641
+2026-01-21 10:46:56.065 [LINES] count=100 first=Power@10:46:55.856 last=LoadingScreen@10:46:55.923
+2026-01-21 10:46:56.295 [LINES] count=36 first=Power@10:46:56.256 last=LoadingScreen@10:46:56.256
+2026-01-21 10:46:57.330 [LINES] count=97 first=Power@10:46:57.157 last=LoadingScreen@10:46:57.208
+2026-01-21 10:46:57.557 [LINES] count=42 first=Power@10:46:57.507 last=Power@10:46:57.523
+2026-01-21 10:46:57.775 [LINES] count=16 first=Power@10:46:57.593 last=Power@10:46:57.610
+2026-01-21 10:47:03.770 [LINES] count=28 first=Power@10:47:03.726 last=Power@10:47:03.766
+2026-01-21 10:47:03.983 [LINES] count=58 first=Power@10:47:03.776 last=Power@10:47:03.776
+2026-01-21 10:47:05.418 [LINES] count=147 first=Power@10:47:05.363 last=Power@10:47:05.379
+2026-01-21 10:47:05.419 [EVENT] RemovedFromDeck entity=33 cardId=VAC_410 zone=HAND
+2026-01-21 10:47:05.419 [EVENT] RemovedFromDeck cardId=VAC_410
+2026-01-21 10:47:05.420 [REMOVE_CALL] cardId=VAC_410
+2026-01-21 10:47:05.420 [REMOVE_OK] cardId=VAC_410 newCount=1 remainingTotal=26
+2026-01-21 10:47:06.052 [LINES] count=13 first=Power@10:47:05.929 last=Power@10:47:05.945
+2026-01-21 10:47:24.948 [LINES] count=1 first=Power@10:47:24.920 last=Power@10:47:24.920
+2026-01-21 10:47:25.391 [LINES] count=186 first=Power@10:47:25.219 last=LoadingScreen@10:47:25.286
+2026-01-21 10:47:25.613 [LINES] count=1 first=Power@10:47:25.452 last=Power@10:47:25.452
+2026-01-21 10:47:26.237 [LINES] count=37 first=Power@10:47:26.118 last=Power@10:47:26.118
+2026-01-21 10:47:26.657 [LINES] count=28 first=Power@10:47:26.488 last=Power@10:47:26.535
+2026-01-21 10:47:29.108 [LINES] count=64 first=Power@10:47:28.973 last=Power@10:47:29.038
+2026-01-21 10:47:32.791 [LINES] count=1 first=Power@10:47:32.674 last=Power@10:47:32.674
+2026-01-21 10:47:33.642 [LINES] count=190 first=Power@10:47:33.489 last=LoadingScreen@10:47:33.489
+2026-01-21 10:47:33.871 [LINES] count=44 first=Power@10:47:33.789 last=LoadingScreen@10:47:33.789
+2026-01-21 10:47:34.494 [LINES] count=90 first=Power@10:47:34.472 last=LoadingScreen@10:47:34.472
+2026-01-21 10:47:34.711 [LINES] count=15 first=Power@10:47:34.522 last=LoadingScreen@10:47:34.522
+2026-01-21 10:47:35.124 [LINES] count=24 first=Power@10:47:35.039 last=Power@10:47:35.056
+2026-01-21 10:47:36.150 [LINES] count=29 first=Power@10:47:36.090 last=Power@10:47:36.090
+2026-01-21 10:47:37.374 [LINES] count=13 first=Power@10:47:37.193 last=Power@10:47:37.208
+2026-01-21 10:47:39.218 [LINES] count=147 first=Power@10:47:39.093 last=Power@10:47:39.093
+2026-01-21 10:47:39.219 [EVENT] RemovedFromDeck entity=8 cardId=VAC_338 zone=HAND
+2026-01-21 10:47:39.219 [EVENT] RemovedFromDeck cardId=VAC_338
+2026-01-21 10:47:39.220 [REMOVE_CALL] cardId=VAC_338
+2026-01-21 10:47:39.220 [REMOVE_OK] cardId=VAC_338 newCount=0 remainingTotal=25
+2026-01-21 10:47:39.852 [LINES] count=13 first=Power@10:47:39.643 last=Power@10:47:39.659
+2026-01-21 10:47:44.333 [LINES] count=1 first=Power@10:47:44.261 last=Power@10:47:44.261
+2026-01-21 10:47:44.555 [LINES] count=130 first=Power@10:47:44.493 last=LoadingScreen@10:47:44.493
+2026-01-21 10:47:44.787 [LINES] count=16 first=Power@10:47:44.559 last=Power@10:47:44.709
+2026-01-21 10:47:45.604 [LINES] count=37 first=Power@10:47:45.392 last=Power@10:47:45.392
+2026-01-21 10:47:45.820 [LINES] count=26 first=Power@10:47:45.744 last=Power@10:47:45.793
+2026-01-21 10:47:46.045 [LINES] count=137 first=Power@10:47:45.976 last=LoadingScreen@10:47:46.027
+2026-01-21 10:47:46.457 [LINES] count=16 first=Power@10:47:46.360 last=Power@10:47:46.376
+2026-01-21 10:47:46.873 [LINES] count=8 first=Power@10:47:46.809 last=Power@10:47:46.826
+2026-01-21 10:47:47.498 [LINES] count=1 first=Power@10:47:47.459 last=Power@10:47:47.459
+2026-01-21 10:47:48.325 [LINES] count=202 first=Power@10:47:48.259 last=LoadingScreen@10:47:48.259
+2026-01-21 10:47:48.771 [LINES] count=113 first=Power@10:47:48.559 last=LoadingScreen@10:47:48.559
+2026-01-21 10:47:49.412 [LINES] count=113 first=Power@10:47:49.258 last=LoadingScreen@10:47:49.309
+2026-01-21 10:47:49.835 [LINES] count=54 first=Power@10:47:49.809 last=Power@10:47:49.826
+2026-01-21 10:47:51.525 [LINES] count=7 first=Power@10:47:51.362 last=Power@10:47:51.378
+2026-01-21 10:47:52.548 [LINES] count=60 first=Power@10:47:52.412 last=Power@10:47:52.428
+2026-01-21 10:47:53.780 [LINES] count=34 first=Power@10:47:53.691 last=Power@10:47:53.741
+2026-01-21 10:47:53.993 [LINES] count=153 first=Power@10:47:53.918 last=Power@10:47:53.918
+2026-01-21 10:47:53.994 [EVENT] RemovedFromDeck entity=19 cardId=TOY_359 zone=HAND
+2026-01-21 10:47:53.995 [EVENT] RemovedFromDeck cardId=TOY_359
+2026-01-21 10:47:53.995 [REMOVE_CALL] cardId=TOY_359
+2026-01-21 10:47:53.996 [REMOVE_OK] cardId=TOY_359 newCount=1 remainingTotal=24
+2026-01-21 10:47:54.613 [LINES] count=13 first=Power@10:47:54.518 last=Power@10:47:54.535
+2026-01-21 10:48:02.998 [LINES] count=1 first=Power@10:48:02.937 last=Power@10:48:02.937
+2026-01-21 10:48:03.422 [LINES] count=74 first=Power@10:48:03.239 last=LoadingScreen@10:48:03.289
+2026-01-21 10:48:03.837 [LINES] count=1 first=Power@10:48:03.641 last=Power@10:48:03.641
+2026-01-21 10:48:04.062 [LINES] count=112 first=Power@10:48:03.939 last=Power@10:48:04.039
+2026-01-21 10:48:04.063 [EVENT] RemovedFromDeck entity=5 cardId=WORK_021 zone=GRAVEYARD
+2026-01-21 10:48:04.063 [EVENT] RemovedFromDeck cardId=WORK_021
+2026-01-21 10:48:04.064 [REMOVE_CALL] cardId=WORK_021
+2026-01-21 10:48:04.064 [REMOVE_OK] cardId=WORK_021 newCount=1 remainingTotal=23
+2026-01-21 10:48:04.284 [LINES] count=94 first=Power@10:48:04.056 last=Power@10:48:04.123
+2026-01-21 10:48:04.705 [LINES] count=16 first=Power@10:48:04.508 last=Power@10:48:04.523
+2026-01-21 10:48:04.925 [LINES] count=9 first=Power@10:48:04.706 last=Power@10:48:04.723
+2026-01-21 10:48:05.557 [LINES] count=206 first=Power@10:48:05.523 last=LoadingScreen@10:48:05.523
+2026-01-21 10:48:06.005 [LINES] count=49 first=Power@10:48:05.822 last=LoadingScreen@10:48:05.822
+2026-01-21 10:48:06.224 [LINES] count=45 first=Power@10:48:06.123 last=LoadingScreen@10:48:06.123
+2026-01-21 10:48:06.442 [LINES] count=43 first=Power@10:48:06.422 last=LoadingScreen@10:48:06.422
+2026-01-21 10:48:07.268 [LINES] count=189 first=Power@10:48:07.072 last=LoadingScreen@10:48:07.181
+2026-01-21 10:48:08.703 [LINES] count=15 first=Power@10:48:08.663 last=Power@10:48:08.679
+2026-01-21 10:48:10.164 [LINES] count=53 first=Power@10:48:10.147 last=Power@10:48:10.147
+2026-01-21 10:48:11.591 [LINES] count=54 first=Power@10:48:11.385 last=Power@10:48:11.400
+2026-01-21 10:48:12.830 [LINES] count=48 first=Power@10:48:12.651 last=Power@10:48:12.667
+2026-01-21 10:48:14.459 [LINES] count=1 first=Power@10:48:14.442 last=Power@10:48:14.442
+2026-01-21 10:48:14.678 [LINES] count=130 first=Power@10:48:14.459 last=Power@10:48:14.459
+2026-01-21 10:48:15.100 [LINES] count=13 first=Power@10:48:15.010 last=Power@10:48:15.026
+2026-01-21 10:48:25.472 [LINES] count=1 first=Power@10:48:25.444 last=Power@10:48:25.444
+2026-01-21 10:48:25.900 [LINES] count=142 first=Power@10:48:25.776 last=Power@10:48:25.859
+2026-01-21 10:48:26.718 [LINES] count=37 first=Power@10:48:26.677 last=Power@10:48:26.677
+2026-01-21 10:48:27.137 [LINES] count=25 first=Power@10:48:27.030 last=Power@10:48:27.076
+2026-01-21 10:48:27.556 [LINES] count=1 first=Power@10:48:27.361 last=Power@10:48:27.361
+2026-01-21 10:48:27.788 [LINES] count=138 first=Power@10:48:27.593 last=LoadingScreen@10:48:27.660
+2026-01-21 10:48:28.003 [LINES] count=1 first=Power@10:48:27.793 last=Power@10:48:27.793
+2026-01-21 10:48:28.638 [LINES] count=37 first=Power@10:48:28.493 last=Power@10:48:28.493
+2026-01-21 10:48:28.855 [LINES] count=1 first=Power@10:48:28.845 last=Power@10:48:28.845
+2026-01-21 10:48:29.072 [LINES] count=24 first=Power@10:48:28.860 last=Power@10:48:28.894
+2026-01-21 10:48:29.299 [LINES] count=135 first=Power@10:48:29.093 last=LoadingScreen@10:48:29.144
+2026-01-21 10:48:29.508 [LINES] count=16 first=Power@10:48:29.478 last=Power@10:48:29.493
+2026-01-21 10:48:29.932 [LINES] count=8 first=Power@10:48:29.910 last=Power@10:48:29.926
+2026-01-21 10:48:30.565 [LINES] count=1 first=Power@10:48:30.396 last=Power@10:48:30.396
+2026-01-21 10:48:30.791 [LINES] count=260 first=Power@10:48:30.577 last=LoadingScreen@10:48:30.593
+2026-01-21 10:48:31.447 [LINES] count=1 first=Power@10:48:31.378 last=Power@10:48:31.378
+2026-01-21 10:48:32.071 [LINES] count=33 first=Power@10:48:31.960 last=Power@10:48:31.994
+2026-01-21 10:48:32.297 [LINES] count=286 first=Power@10:48:32.195 last=LoadingScreen@10:48:32.260
+2026-01-21 10:48:32.729 [LINES] count=162 first=Power@10:48:32.561 last=LoadingScreen@10:48:32.561
+2026-01-21 10:48:32.945 [LINES] count=55 first=Power@10:48:32.861 last=LoadingScreen@10:48:32.861
+2026-01-21 10:48:33.364 [LINES] count=51 first=Power@10:48:33.160 last=LoadingScreen@10:48:33.160
+2026-01-21 10:48:33.582 [LINES] count=71 first=Power@10:48:33.460 last=LoadingScreen@10:48:33.460
+2026-01-21 10:48:33.796 [LINES] count=174 first=Power@10:48:33.595 last=Power@10:48:33.643
+2026-01-21 10:48:34.438 [LINES] count=153 first=Power@10:48:34.344 last=LoadingScreen@10:48:34.410
+2026-01-21 10:48:34.439 [EVENT] RemovedFromDeck entity=21 cardId=VAC_416 zone=PLAY
+2026-01-21 10:48:34.439 [EVENT] RemovedFromDeck cardId=VAC_416
+2026-01-21 10:48:34.440 [REMOVE_CALL] cardId=VAC_416
+2026-01-21 10:48:34.441 [REMOVE_OK] cardId=VAC_416 newCount=1 remainingTotal=22
+2026-01-21 10:48:35.266 [LINES] count=54 first=Power@10:48:35.194 last=Power@10:48:35.210
+2026-01-21 10:48:36.896 [LINES] count=116 first=Power@10:48:36.745 last=Power@10:48:36.762
+2026-01-21 10:48:38.541 [LINES] count=14 first=Power@10:48:38.372 last=Power@10:48:38.421
+2026-01-21 10:48:39.379 [LINES] count=55 first=Power@10:48:39.271 last=Power@10:48:39.271
+2026-01-21 10:48:41.028 [LINES] count=16 first=Power@10:48:40.833 last=Power@10:48:40.849
+2026-01-21 10:48:42.462 [LINES] count=47 first=Power@10:48:42.332 last=Power@10:48:42.332
+2026-01-21 10:48:43.701 [LINES] count=68 first=Power@10:48:43.584 last=Power@10:48:43.667
+2026-01-21 10:48:45.332 [LINES] count=19 first=Power@10:48:45.199 last=Power@10:48:45.216
+2026-01-21 10:48:48.202 [LINES] count=72 first=Power@10:48:48.122 last=Power@10:48:48.187
+2026-01-21 10:48:50.050 [LINES] count=134 first=Power@10:48:49.955 last=Power@10:48:49.972
+2026-01-21 10:48:50.670 [LINES] count=13 first=Power@10:48:50.522 last=Power@10:48:50.537
+2026-01-21 10:48:56.363 [LINES] count=1 first=Power@10:48:56.205 last=Power@10:48:56.205
+2026-01-21 10:48:56.588 [LINES] count=219 first=Power@10:48:56.455 last=LoadingScreen@10:48:56.504
+2026-01-21 10:48:56.588 [EVENT] RemovedFromDeck entity=12 cardId=VAC_408 zone=PLAY
+2026-01-21 10:48:56.589 [EVENT] RemovedFromDeck cardId=VAC_408
+2026-01-21 10:48:56.589 [REMOVE_CALL] cardId=VAC_408
+2026-01-21 10:48:56.590 [REMOVE_OK] cardId=VAC_408 newCount=1 remainingTotal=21
+2026-01-21 10:48:56.813 [LINES] count=2 first=Power@10:48:56.604 last=Power@10:48:56.604
+2026-01-21 10:49:03.918 [LINES] count=2 first=Power@10:49:03.726 last=Power@10:49:03.726
+2026-01-21 10:49:04.151 [LINES] count=183 first=Power@10:49:03.921 last=LoadingScreen@10:49:04.009
+2026-01-21 10:49:04.152 [EVENT] RemovedFromDeck entity=18 cardId=VAC_521 zone=HAND
+2026-01-21 10:49:04.152 [EVENT] RemovedFromDeck cardId=VAC_521
+2026-01-21 10:49:04.152 [REMOVE_CALL] cardId=VAC_521
+2026-01-21 10:49:04.153 [REMOVE_OK] cardId=VAC_521 newCount=0 remainingTotal=20
+2026-01-21 10:49:04.368 [LINES] count=8 first=Power@10:49:04.190 last=Power@10:49:04.206
+2026-01-21 10:49:05.831 [LINES] count=15 first=Power@10:49:05.806 last=Power@10:49:05.822
+2026-01-21 10:49:06.050 [LINES] count=69 first=Power@10:49:05.939 last=Power@10:49:06.040
+2026-01-21 10:49:06.266 [LINES] count=7 first=Power@10:49:06.057 last=Power@10:49:06.057
+2026-01-21 10:49:06.484 [LINES] count=1 first=Power@10:49:06.292 last=Power@10:49:06.292
+2026-01-21 10:49:06.708 [LINES] count=122 first=Power@10:49:06.523 last=LoadingScreen@10:49:06.573
+2026-01-21 10:49:07.740 [LINES] count=1 first=Power@10:49:07.616 last=Power@10:49:07.616
+2026-01-21 10:49:07.965 [LINES] count=125 first=Power@10:49:07.815 last=Power@10:49:07.881
+2026-01-21 10:49:08.190 [LINES] count=64 first=Power@10:49:08.081 last=Power@10:49:08.098
+2026-01-21 10:49:08.608 [LINES] count=1 first=Power@10:49:08.415 last=Power@10:49:08.415
+2026-01-21 10:49:09.238 [LINES] count=89 first=Power@10:49:09.197 last=LoadingScreen@10:49:09.197
+2026-01-21 10:49:09.447 [LINES] count=78 first=Power@10:49:09.264 last=Power@10:49:09.281
+2026-01-21 10:49:09.675 [LINES] count=147 first=Power@10:49:09.498 last=LoadingScreen@10:49:09.498
+2026-01-21 10:49:09.895 [LINES] count=52 first=Power@10:49:09.798 last=LoadingScreen@10:49:09.798
+2026-01-21 10:49:10.119 [LINES] count=170 first=Power@10:49:09.999 last=Power@10:49:10.082
+2026-01-21 10:49:10.750 [LINES] count=177 first=Power@10:49:10.698 last=LoadingScreen@10:49:10.714
+2026-01-21 10:49:11.780 [LINES] count=52 first=Power@10:49:11.631 last=Power@10:49:11.648
+2026-01-21 10:49:13.209 [LINES] count=103 first=Power@10:49:13.181 last=Power@10:49:13.197
+2026-01-21 10:49:14.892 [LINES] count=14 first=Power@10:49:14.781 last=Power@10:49:14.832
+2026-01-21 10:49:15.726 [LINES] count=46 first=Power@10:49:15.698 last=Power@10:49:15.698
+2026-01-21 10:49:17.157 [LINES] count=64 first=Power@10:49:16.948 last=Power@10:49:17.033
+2026-01-21 10:49:19.009 [LINES] count=135 first=Power@10:49:18.798 last=Power@10:49:18.814
+2026-01-21 10:49:19.425 [LINES] count=13 first=Power@10:49:19.365 last=Power@10:49:19.382
+2026-01-21 10:49:27.774 [LINES] count=1 first=Power@10:49:27.666 last=Power@10:49:27.666
+2026-01-21 10:49:27.997 [LINES] count=212 first=Power@10:49:27.915 last=Power@10:49:27.947
+2026-01-21 10:49:28.612 [LINES] count=1 first=Power@10:49:28.465 last=Power@10:49:28.465
+2026-01-21 10:49:28.835 [LINES] count=73 first=Power@10:49:28.715 last=LoadingScreen@10:49:28.782
+2026-01-21 10:49:29.262 [LINES] count=1 first=Power@10:49:29.115 last=Power@10:49:29.115
+2026-01-21 10:49:29.486 [LINES] count=61 first=Power@10:49:29.298 last=LoadingScreen@10:49:29.364
+2026-01-21 10:49:30.100 [LINES] count=36 first=Power@10:49:30.032 last=Power@10:49:30.047
+2026-01-21 10:49:31.327 [LINES] count=36 first=Power@10:49:31.215 last=Power@10:49:31.232
+2026-01-21 10:49:32.556 [LINES] count=46 first=Power@10:49:32.364 last=Power@10:49:32.381
+2026-01-21 10:49:33.784 [LINES] count=99 first=Power@10:49:33.633 last=Power@10:49:33.748
+2026-01-21 10:49:34.004 [LINES] count=1 first=Power@10:49:33.915 last=Power@10:49:33.915
+2026-01-21 10:49:34.625 [LINES] count=54 first=Power@10:49:34.465 last=Power@10:49:34.482
+2026-01-21 10:49:34.852 [LINES] count=90 first=Power@10:49:34.781 last=LoadingScreen@10:49:34.781
+2026-01-21 10:49:35.303 [LINES] count=251 first=Power@10:49:35.081 last=Power@10:49:35.215
+2026-01-21 10:49:35.531 [LINES] count=114 first=Power@10:49:35.381 last=LoadingScreen@10:49:35.381
+2026-01-21 10:49:35.532 [EVENT] RemovedFromDeck entity=48 cardId=CORE_EX1_248 zone=HAND
+2026-01-21 10:49:35.533 [EVENT] RemovedFromDeck cardId=CORE_EX1_248
+2026-01-21 10:49:35.533 [REMOVE_CALL] cardId=CORE_EX1_248
+2026-01-21 10:49:35.534 [REMOVE_FAIL] not found cardId=CORE_EX1_248
+2026-01-21 10:49:35.767 [LINES] count=71 first=Power@10:49:35.681 last=LoadingScreen@10:49:35.681
+2026-01-21 10:49:36.404 [LINES] count=140 first=Power@10:49:36.382 last=LoadingScreen@10:49:36.398
+2026-01-21 10:49:36.620 [LINES] count=63 first=Power@10:49:36.398 last=Power@10:49:36.398
+2026-01-21 10:49:36.829 [LINES] count=54 first=Power@10:49:36.764 last=Power@10:49:36.781
+2026-01-21 10:49:38.476 [LINES] count=19 first=Power@10:49:38.315 last=Power@10:49:38.332
+2026-01-21 10:49:39.504 [LINES] count=58 first=Power@10:49:39.397 last=Power@10:49:39.497
+2026-01-21 10:49:39.719 [LINES] count=11 first=Power@10:49:39.514 last=Power@10:49:39.514
+2026-01-21 10:49:40.959 [LINES] count=50 first=Power@10:49:40.847 last=Power@10:49:40.847
+2026-01-21 10:49:42.392 [LINES] count=1 first=Power@10:49:42.381 last=Power@10:49:42.381
+2026-01-21 10:49:42.609 [LINES] count=6 first=Power@10:49:42.397 last=Power@10:49:42.397
+2026-01-21 10:49:43.635 [LINES] count=60 first=Power@10:49:43.431 last=Power@10:49:43.447
+2026-01-21 10:49:44.689 [LINES] count=32 first=Power@10:49:44.648 last=Power@10:49:44.664
+2026-01-21 10:49:44.905 [LINES] count=64 first=Power@10:49:44.698 last=Power@10:49:44.897
+2026-01-21 10:49:46.359 [LINES] count=67 first=Power@10:49:46.149 last=Power@10:49:46.231
+2026-01-21 10:49:48.194 [LINES] count=154 first=Power@10:49:47.998 last=Power@10:49:48.014
+2026-01-21 10:49:48.194 [EVENT] RemovedFromDeck entity=14 cardId=VAC_413 zone=HAND
+2026-01-21 10:49:48.195 [EVENT] RemovedFromDeck cardId=VAC_413
+2026-01-21 10:49:48.195 [REMOVE_CALL] cardId=VAC_413
+2026-01-21 10:49:48.195 [REMOVE_OK] cardId=VAC_413 newCount=0 remainingTotal=19
+2026-01-21 10:49:48.613 [LINES] count=13 first=Power@10:49:48.564 last=Power@10:49:48.580
+2026-01-21 10:49:52.489 [LINES] count=1 first=Power@10:49:52.415 last=Power@10:49:52.415
+2026-01-21 10:49:52.718 [LINES] count=157 first=Power@10:49:52.615 last=LoadingScreen@10:49:52.665
+2026-01-21 10:49:53.144 [LINES] count=1 first=Power@10:49:52.999 last=Power@10:49:52.999
+2026-01-21 10:49:53.368 [LINES] count=117 first=Power@10:49:53.215 last=Power@10:49:53.348
+2026-01-21 10:49:53.593 [LINES] count=56 first=Power@10:49:53.397 last=Power@10:49:53.415
+2026-01-21 10:49:54.214 [LINES] count=19 first=Power@10:49:54.133 last=Power@10:49:54.198
+2026-01-21 10:49:54.430 [LINES] count=9 first=Power@10:49:54.215 last=Power@10:49:54.215
+2026-01-21 10:49:57.882 [LINES] count=1 first=Power@10:49:57.833 last=Power@10:49:57.833
+2026-01-21 10:49:58.107 [LINES] count=186 first=Power@10:49:58.081 last=LoadingScreen@10:49:58.098
+2026-01-21 10:49:58.324 [LINES] count=39 first=Power@10:49:58.098 last=Power@10:49:58.115
+2026-01-21 10:49:59.141 [LINES] count=1 first=Power@10:49:59.032 last=Power@10:49:59.032
+2026-01-21 10:49:59.368 [LINES] count=62 first=Power@10:49:59.282 last=LoadingScreen@10:49:59.331
+2026-01-21 10:50:00.197 [LINES] count=2 first=Power@10:50:00.031 last=Power@10:50:00.182
+2026-01-21 10:50:00.411 [LINES] count=35 first=Power@10:50:00.198 last=Power@10:50:00.198
+2026-01-21 10:50:01.040 [LINES] count=96 first=Power@10:50:00.881 last=LoadingScreen@10:50:00.881
+2026-01-21 10:50:01.261 [LINES] count=203 first=Power@10:50:01.181 last=LoadingScreen@10:50:01.181
+2026-01-21 10:50:01.489 [LINES] count=48 first=Power@10:50:01.332 last=LoadingScreen@10:50:01.481
+2026-01-21 10:50:01.703 [LINES] count=46 first=Power@10:50:01.481 last=Power@10:50:01.481
+2026-01-21 10:50:01.924 [LINES] count=45 first=Power@10:50:01.781 last=LoadingScreen@10:50:01.781
+2026-01-21 10:50:02.562 [LINES] count=189 first=Power@10:50:02.481 last=LoadingScreen@10:50:02.531
+2026-01-21 10:50:03.794 [LINES] count=43 first=Power@10:50:03.749 last=Power@10:50:03.764
+2026-01-21 10:50:05.225 [LINES] count=70 first=Power@10:50:05.016 last=Power@10:50:05.065
+2026-01-21 10:50:05.866 [LINES] count=156 first=Power@10:50:05.783 last=Power@10:50:05.799
+2026-01-21 10:50:07.489 [LINES] count=53 first=Power@10:50:07.349 last=Power@10:50:07.365
+2026-01-21 10:50:08.929 [LINES] count=71 first=Power@10:50:08.899 last=Power@10:50:08.916
+2026-01-21 10:50:12.608 [LINES] count=107 first=Power@10:50:12.525 last=Power@10:50:12.589
+2026-01-21 10:50:12.818 [LINES] count=66 first=Power@10:50:12.773 last=Power@10:50:12.789
+2026-01-21 10:50:14.450 [LINES] count=11 first=Power@10:50:14.373 last=Power@10:50:14.389
+2026-01-21 10:50:16.280 [LINES] count=33 first=Power@10:50:16.218 last=Power@10:50:16.233
+2026-01-21 10:50:17.303 [LINES] count=29 first=Power@10:50:17.267 last=Power@10:50:17.267
+2026-01-21 10:50:18.533 [LINES] count=13 first=Power@10:50:18.417 last=Power@10:50:18.434
+2026-01-21 10:50:20.379 [LINES] count=46 first=Power@10:50:20.267 last=Power@10:50:20.267
+2026-01-21 10:50:22.053 [LINES] count=77 first=Power@10:50:22.034 last=Power@10:50:22.051
+2026-01-21 10:50:22.270 [LINES] count=53 first=Power@10:50:22.051 last=Power@10:50:22.051
+2026-01-21 10:50:22.893 [LINES] count=13 first=Power@10:50:22.806 last=Power@10:50:22.822
+2026-01-21 10:50:30.013 [LINES] count=1 first=Power@10:50:29.946 last=Power@10:50:29.946
+2026-01-21 10:50:30.241 [LINES] count=60 first=Power@10:50:30.164 last=LoadingScreen@10:50:30.230
+2026-01-21 10:50:31.692 [LINES] count=46 first=Power@10:50:31.513 last=Power@10:50:31.547
+2026-01-21 10:50:32.929 [LINES] count=1 first=Power@10:50:32.781 last=Power@10:50:32.781
+2026-01-21 10:50:33.156 [LINES] count=381 first=Power@10:50:32.964 last=LoadingScreen@10:50:33.030
+2026-01-21 10:50:33.984 [LINES] count=24 first=Power@10:50:33.814 last=Power@10:50:33.864
+2026-01-21 10:50:37.630 [LINES] count=1 first=Power@10:50:37.598 last=Power@10:50:37.598
+2026-01-21 10:50:38.072 [LINES] count=127 first=Power@10:50:37.846 last=LoadingScreen@10:50:37.897
+2026-01-21 10:50:38.072 [EVENT] RemovedFromDeck entity=32 cardId=CORE_BAR_801 zone=GRAVEYARD
+2026-01-21 10:50:38.073 [EVENT] RemovedFromDeck cardId=CORE_BAR_801
+2026-01-21 10:50:38.073 [REMOVE_CALL] cardId=CORE_BAR_801
+2026-01-21 10:50:38.074 [REMOVE_OK] cardId=CORE_BAR_801 newCount=1 remainingTotal=18
+2026-01-21 10:50:38.297 [LINES] count=1 first=Power@10:50:38.130 last=Power@10:50:38.130
+2026-01-21 10:50:38.525 [LINES] count=156 first=Power@10:50:38.347 last=LoadingScreen@10:50:38.397
+2026-01-21 10:50:39.559 [LINES] count=149 first=Power@10:50:39.397 last=Power@10:50:39.497
+2026-01-21 10:50:39.774 [LINES] count=1 first=Power@10:50:39.630 last=Power@10:50:39.630
+2026-01-21 10:50:40.612 [LINES] count=94 first=Power@10:50:40.429 last=LoadingScreen@10:50:40.429
+2026-01-21 10:50:40.842 [LINES] count=61 first=Power@10:50:40.796 last=LoadingScreen@10:50:40.796
+2026-01-21 10:50:41.076 [LINES] count=44 first=Power@10:50:41.030 last=LoadingScreen@10:50:41.030
+2026-01-21 10:50:41.508 [LINES] count=69 first=Power@10:50:41.329 last=Power@10:50:41.497
+2026-01-21 10:50:41.742 [LINES] count=203 first=Power@10:50:41.513 last=LoadingScreen@10:50:41.631
+2026-01-21 10:50:42.382 [LINES] count=239 first=Power@10:50:42.330 last=LoadingScreen@10:50:42.347
+2026-01-21 10:50:42.383 [EVENT] RemovedFromDeck entity=23 cardId=TLC_828 zone=HAND
+2026-01-21 10:50:42.383 [EVENT] RemovedFromDeck cardId=TLC_828
+2026-01-21 10:50:42.384 [REMOVE_CALL] cardId=TLC_828
+2026-01-21 10:50:42.385 [REMOVE_OK] cardId=TLC_828 newCount=1 remainingTotal=17
+2026-01-21 10:50:43.226 [LINES] count=68 first=Power@10:50:43.064 last=Power@10:50:43.080
+2026-01-21 10:50:44.692 [LINES] count=1 first=Power@10:50:44.678 last=Power@10:50:44.678
+2026-01-21 10:50:44.908 [LINES] count=5 first=Power@10:50:44.694 last=Power@10:50:44.807
+2026-01-21 10:50:45.123 [LINES] count=9 first=Power@10:50:45.043 last=Power@10:50:45.043
+2026-01-21 10:50:46.353 [LINES] count=52 first=Power@10:50:46.143 last=Power@10:50:46.143
+2026-01-21 10:50:47.590 [LINES] count=45 first=Power@10:50:47.394 last=Power@10:50:47.410
+2026-01-21 10:50:48.809 [LINES] count=54 first=Power@10:50:48.661 last=Power@10:50:48.679
+2026-01-21 10:50:50.039 [LINES] count=47 first=Power@10:50:49.928 last=Power@10:50:49.944
+2026-01-21 10:50:51.874 [LINES] count=143 first=Power@10:50:51.710 last=Power@10:50:51.727
+2026-01-21 10:50:52.495 [LINES] count=13 first=Power@10:50:52.295 last=Power@10:50:52.312
+2026-01-21 10:51:03.519 [LINES] count=1 first=Power@10:51:03.362 last=Power@10:51:03.362
+2026-01-21 10:51:03.745 [LINES] count=245 first=Power@10:51:03.545 last=LoadingScreen@10:51:03.611
+2026-01-21 10:51:05.598 [LINES] count=1 first=Power@10:51:05.428 last=Power@10:51:05.428
+2026-01-21 10:51:05.823 [LINES] count=193 first=Power@10:51:05.678 last=LoadingScreen@10:51:05.795
+2026-01-21 10:51:06.650 [LINES] count=1 first=Power@10:51:06.479 last=Power@10:51:06.479
+2026-01-21 10:51:06.873 [LINES] count=110 first=Power@10:51:06.728 last=LoadingScreen@10:51:06.778
+2026-01-21 10:51:07.301 [LINES] count=95 first=Power@10:51:07.128 last=Power@10:51:07.281
+2026-01-21 10:51:07.923 [LINES] count=1 first=Power@10:51:07.731 last=Power@10:51:07.731
+2026-01-21 10:51:08.147 [LINES] count=100 first=Power@10:51:08.014 last=LoadingScreen@10:51:08.064
+2026-01-21 10:51:08.978 [LINES] count=64 first=Power@10:51:08.849 last=Power@10:51:08.864
+2026-01-21 10:51:09.397 [LINES] count=1 first=Power@10:51:09.332 last=Power@10:51:09.332
+2026-01-21 10:51:09.614 [LINES] count=54 first=Power@10:51:09.581 last=Power@10:51:09.597
+2026-01-21 10:51:09.840 [LINES] count=90 first=Power@10:51:09.613 last=LoadingScreen@10:51:09.663
+2026-01-21 10:51:10.480 [LINES] count=54 first=Power@10:51:10.315 last=Power@10:51:10.330
+2026-01-21 10:51:11.143 [LINES] count=10 first=Power@10:51:11.048 last=Power@10:51:11.064
+2026-01-21 10:51:17.679 [LINES] count=1 first=Power@10:51:17.498 last=Power@10:51:17.498
+2026-01-21 10:51:17.904 [LINES] count=167 first=Power@10:51:17.681 last=LoadingScreen@10:51:17.730
+2026-01-21 10:51:18.326 [LINES] count=1 first=Power@10:51:18.198 last=Power@10:51:18.198
+2026-01-21 10:51:18.549 [LINES] count=98 first=Power@10:51:18.381 last=Power@10:51:18.498
+2026-01-21 10:51:18.759 [LINES] count=54 first=Power@10:51:18.581 last=Power@10:51:18.598
+2026-01-21 10:51:18.976 [LINES] count=1 first=Power@10:51:18.864 last=Power@10:51:18.864
+2026-01-21 10:51:19.201 [LINES] count=58 first=Power@10:51:19.080 last=LoadingScreen@10:51:19.147
+2026-01-21 10:51:19.426 [LINES] count=54 first=Power@10:51:19.315 last=Power@10:51:19.330
+2026-01-21 10:51:19.644 [LINES] count=1 first=Power@10:51:19.614 last=Power@10:51:19.614
+2026-01-21 10:51:20.063 [LINES] count=1 first=Power@10:51:20.047 last=Power@10:51:20.047
+2026-01-21 10:51:20.284 [LINES] count=9 first=Power@10:51:20.064 last=Power@10:51:20.064
+2026-01-21 10:51:20.513 [LINES] count=236 first=Power@10:51:20.464 last=LoadingScreen@10:51:20.464
+2026-01-21 10:51:20.946 [LINES] count=197 first=Power@10:51:20.764 last=LoadingScreen@10:51:20.764
+2026-01-21 10:51:21.177 [LINES] count=61 first=Power@10:51:21.064 last=LoadingScreen@10:51:21.064
+2026-01-21 10:51:21.409 [LINES] count=45 first=Power@10:51:21.365 last=LoadingScreen@10:51:21.365
+2026-01-21 10:51:22.233 [LINES] count=170 first=Power@10:51:22.014 last=LoadingScreen@10:51:22.130
+2026-01-21 10:51:23.887 [LINES] count=71 first=Power@10:51:23.797 last=Power@10:51:23.814
+2026-01-21 10:51:27.332 [LINES] count=25 first=Power@10:51:27.273 last=Power@10:51:27.321
+2026-01-21 10:51:27.550 [LINES] count=150 first=Power@10:51:27.337 last=Power@10:51:27.538
+2026-01-21 10:51:29.180 [LINES] count=16 first=Power@10:51:29.088 last=Power@10:51:29.104
+2026-01-21 10:51:30.635 [LINES] count=24 first=Power@10:51:30.587 last=Power@10:51:30.587
+2026-01-21 10:51:31.660 [LINES] count=29 first=Power@10:51:31.621 last=Power@10:51:31.621
+2026-01-21 10:51:32.903 [LINES] count=13 first=Power@10:51:32.722 last=Power@10:51:32.738
+2026-01-21 10:51:34.753 [LINES] count=170 first=Power@10:51:34.622 last=Power@10:51:34.721
+2026-01-21 10:51:39.664 [LINES] count=1 first=Power@10:51:39.538 last=Power@10:51:39.538
+2026-01-21 10:51:39.892 [LINES] count=241 first=Power@10:51:39.805 last=Power@10:51:39.838
+2026-01-21 10:51:39.892 [EVENT] RemovedFromDeck entity=22 cardId=VAC_416 zone=PLAY
+2026-01-21 10:51:39.893 [EVENT] RemovedFromDeck cardId=VAC_416
+2026-01-21 10:51:39.893 [REMOVE_CALL] cardId=VAC_416
+2026-01-21 10:51:39.894 [REMOVE_OK] cardId=VAC_416 newCount=0 remainingTotal=16
+2026-01-21 10:51:40.111 [LINES] count=1 first=Power@10:51:40.032 last=Power@10:51:40.032
+2026-01-21 10:51:40.740 [LINES] count=55 first=Power@10:51:40.615 last=LoadingScreen@10:51:40.615
+2026-01-21 10:51:41.963 [LINES] count=23 first=Power@10:51:41.932 last=Power@10:51:41.947
+2026-01-21 10:51:42.181 [LINES] count=132 first=Power@10:51:41.998 last=Power@10:51:42.014
+2026-01-21 10:51:44.433 [LINES] count=32 first=Power@10:51:44.382 last=Power@10:51:44.432
+2026-01-21 10:51:44.648 [LINES] count=51 first=Power@10:51:44.482 last=Power@10:51:44.498
+2026-01-21 10:51:46.080 [LINES] count=1 first=Power@10:51:46.065 last=Power@10:51:46.065
+2026-01-21 10:51:46.299 [LINES] count=53 first=Power@10:51:46.081 last=Power@10:51:46.114
+2026-01-21 10:52:40.702 [LINES] count=2 first=LoadingScreen@10:52:40.557 last=LoadingScreen@10:52:40.557
+2026-01-21 10:52:40.920 [LINES] count=4 first=LoadingScreen@10:52:40.708 last=LoadingScreen@10:52:40.708
+2026-01-21 10:52:41.141 [LINES] count=2 first=LoadingScreen@10:52:41.023 last=LoadingScreen@10:52:41.023
+2026-01-21 10:52:41.961 [LINES] count=3 first=LoadingScreen@10:52:41.948 last=LoadingScreen@10:52:41.948
+2026-01-21 10:52:43.189 [LINES] count=5 first=LoadingScreen@10:52:42.976 last=LoadingScreen@10:52:42.976
+2026-01-21 10:52:44.023 [LINES] count=1 first=LoadingScreen@10:52:43.984 last=LoadingScreen@10:52:43.984
+2026-01-21 10:52:59.712 [LINES] count=8 first=LoadingScreen@10:52:59.588 last=LoadingScreen@10:52:59.638
+2026-01-21 10:53:00.165 [LINES] count=811 first=LoadingScreen@10:53:00.012 last=LoadingScreen@10:53:00.109
+2026-01-21 10:53:00.166 [INFO] Auto-detected MyControllerId=1 (PlayerID=1)
+2026-01-21 10:53:00.167 [EVENT] RemovedFromDeck entity=8 cardId=TLC_828 zone=HAND
+2026-01-21 10:53:00.167 [EVENT] RemovedFromDeck cardId=TLC_828
+2026-01-21 10:53:00.168 [REMOVE_CALL] cardId=TLC_828
+2026-01-21 10:53:00.169 [REMOVE_OK] cardId=TLC_828 newCount=1 remainingTotal=29
+2026-01-21 10:53:00.398 [LINES] count=28 first=Power@10:53:00.175 last=Power@10:53:00.293
+2026-01-21 10:53:02.427 [LINES] count=1 first=LoadingScreen@10:53:02.412 last=LoadingScreen@10:53:02.412
+2026-01-21 10:53:02.643 [LINES] count=1 first=LoadingScreen@10:53:02.561 last=LoadingScreen@10:53:02.561
+2026-01-21 10:53:03.265 [LINES] count=2 first=LoadingScreen@10:53:03.212 last=LoadingScreen@10:53:03.212
+2026-01-21 10:53:03.480 [LINES] count=120 first=Power@10:53:03.412 last=Power@10:53:03.427
+2026-01-21 10:53:03.481 [EVENT] RemovedFromDeck entity=4 cardId=VAC_521 zone=HAND
+2026-01-21 10:53:03.482 [EVENT] RemovedFromDeck cardId=VAC_521
+2026-01-21 10:53:03.483 [REMOVE_CALL] cardId=VAC_521
+2026-01-21 10:53:03.484 [REMOVE_OK] cardId=VAC_521 newCount=1 remainingTotal=28
+2026-01-21 10:53:03.901 [LINES] count=25 first=Power@10:53:03.831 last=Power@10:53:03.846
+2026-01-21 10:53:04.319 [LINES] count=5 first=LoadingScreen@10:53:04.230 last=LoadingScreen@10:53:04.230
+2026-01-21 10:53:05.341 [LINES] count=1 first=LoadingScreen@10:53:05.236 last=LoadingScreen@10:53:05.236
+2026-01-21 10:53:41.698 [LINES] count=2 first=Power@10:53:41.620 last=Power@10:53:41.620
+2026-01-21 10:53:41.922 [LINES] count=175 first=Power@10:53:41.803 last=LoadingScreen@10:53:41.853
+2026-01-21 10:53:41.923 [EVENT] AddedToDeck entity=4 cardId=VAC_521
+2026-01-21 10:53:41.924 [EVENT] AddedToDeck cardId=VAC_521
+2026-01-21 10:53:41.926 [EVENT] RemovedFromDeck entity=25 cardId=VAC_410 zone=HAND
+2026-01-21 10:53:41.926 [EVENT] RemovedFromDeck cardId=VAC_410
+2026-01-21 10:53:41.930 [REMOVE_CALL] cardId=VAC_410
+2026-01-21 10:53:41.930 [REMOVE_OK] cardId=VAC_410 newCount=1 remainingTotal=28
+2026-01-21 10:53:41.932 [EVENT] RemovedFromDeck entity=27 cardId=VAC_338 zone=HAND
+2026-01-21 10:53:41.932 [EVENT] RemovedFromDeck cardId=VAC_338
+2026-01-21 10:53:41.936 [REMOVE_CALL] cardId=VAC_338
+2026-01-21 10:53:41.937 [REMOVE_OK] cardId=VAC_338 newCount=1 remainingTotal=27
+2026-01-21 10:53:42.162 [LINES] count=10 first=Power@10:53:41.987 last=Power@10:53:42.003
+2026-01-21 10:53:42.386 [LINES] count=62 first=Power@10:53:42.203 last=LoadingScreen@10:53:42.254
+2026-01-21 10:53:47.106 [LINES] count=52 first=Power@10:53:47.037 last=Power@10:53:47.088
+2026-01-21 10:53:47.321 [LINES] count=49 first=Power@10:53:47.088 last=Power@10:53:47.088
+2026-01-21 10:53:47.534 [LINES] count=13 first=Power@10:53:47.394 last=Power@10:53:47.410
+2026-01-21 10:53:51.030 [LINES] count=1 first=Power@10:53:50.994 last=Power@10:53:50.994
+2026-01-21 10:53:51.458 [LINES] count=196 first=Power@10:53:51.261 last=Power@10:53:51.294
+2026-01-21 10:53:51.459 [EVENT] RemovedFromDeck entity=6 cardId=CORE_DS1_184 zone=PLAY
+2026-01-21 10:53:51.459 [EVENT] RemovedFromDeck cardId=CORE_DS1_184
+2026-01-21 10:53:51.460 [REMOVE_CALL] cardId=CORE_DS1_184
+2026-01-21 10:53:51.460 [REMOVE_OK] cardId=CORE_DS1_184 newCount=1 remainingTotal=26
+2026-01-21 10:53:51.688 [LINES] count=7 first=Power@10:53:51.569 last=LoadingScreen@10:53:51.569
+2026-01-21 10:53:53.124 [LINES] count=2 first=Power@10:53:53.084 last=Power@10:53:53.084
+2026-01-21 10:53:54.557 [LINES] count=2 first=Power@10:53:54.435 last=Power@10:53:54.435
+2026-01-21 10:53:54.775 [LINES] count=3 first=Power@10:53:54.752 last=Power@10:53:54.752
+2026-01-21 10:53:54.999 [LINES] count=142 first=Power@10:53:54.801 last=Power@10:53:54.952
+2026-01-21 10:53:55.223 [LINES] count=1 first=Power@10:53:55.201 last=Power@10:53:55.201
+2026-01-21 10:53:56.260 [LINES] count=184 first=Power@10:53:56.051 last=LoadingScreen@10:53:56.051
+2026-01-21 10:53:56.492 [LINES] count=37 first=Power@10:53:56.352 last=LoadingScreen@10:53:56.352
+2026-01-21 10:53:56.720 [LINES] count=73 first=Power@10:53:56.651 last=LoadingScreen@10:53:56.717
+2026-01-21 10:53:56.936 [LINES] count=10 first=Power@10:53:56.717 last=Power@10:53:56.717
+2026-01-21 10:53:57.371 [LINES] count=92 first=Power@10:53:57.334 last=LoadingScreen@10:53:57.334
+2026-01-21 10:53:57.599 [LINES] count=13 first=Power@10:53:57.401 last=LoadingScreen@10:53:57.401
+2026-01-21 10:53:57.823 [LINES] count=40 first=Power@10:53:57.601 last=Power@10:53:57.617
+2026-01-21 10:53:59.268 [LINES] count=6 first=Power@10:53:59.151 last=Power@10:53:59.168
+2026-01-21 10:54:00.106 [LINES] count=13 first=Power@10:53:59.901 last=Power@10:53:59.951
+2026-01-21 10:54:01.740 [LINES] count=54 first=Power@10:54:01.667 last=Power@10:54:01.667
+2026-01-21 10:54:03.374 [LINES] count=21 first=Power@10:54:03.251 last=Power@10:54:03.267
+2026-01-21 10:54:03.588 [LINES] count=2 first=Power@10:54:03.517 last=Power@10:54:03.517
+2026-01-21 10:54:04.629 [LINES] count=9 first=Power@10:54:04.543 last=Power@10:54:04.559
+2026-01-21 10:54:06.261 [LINES] count=158 first=Power@10:54:06.092 last=Power@10:54:06.109
+2026-01-21 10:54:06.262 [EVENT] RemovedFromDeck entity=31 cardId=FIR_909 zone=HAND
+2026-01-21 10:54:06.262 [EVENT] RemovedFromDeck cardId=FIR_909
+2026-01-21 10:54:06.263 [REMOVE_CALL] cardId=FIR_909
+2026-01-21 10:54:06.263 [REMOVE_OK] cardId=FIR_909 newCount=0 remainingTotal=25
+2026-01-21 10:54:06.691 [LINES] count=13 first=Power@10:54:06.666 last=Power@10:54:06.683
+2026-01-21 10:54:12.430 [LINES] count=1 first=Power@10:54:12.418 last=Power@10:54:12.418
+2026-01-21 10:54:12.657 [LINES] count=192 first=Power@10:54:12.584 last=LoadingScreen@10:54:12.635
+2026-01-21 10:54:12.877 [LINES] count=1 first=Power@10:54:12.750 last=Power@10:54:12.750
+2026-01-21 10:54:13.501 [LINES] count=37 first=Power@10:54:13.484 last=Power@10:54:13.484
+2026-01-21 10:54:13.924 [LINES] count=29 first=Power@10:54:13.853 last=Power@10:54:13.919
+2026-01-21 10:54:14.364 [LINES] count=95 first=Power@10:54:14.167 last=LoadingScreen@10:54:14.233
+2026-01-21 10:54:15.787 [LINES] count=1 first=Power@10:54:15.684 last=Power@10:54:15.684
+2026-01-21 10:54:16.408 [LINES] count=111 first=Power@10:54:16.317 last=Power@10:54:16.384
+2026-01-21 10:54:16.632 [LINES] count=74 first=Power@10:54:16.566 last=LoadingScreen@10:54:16.566
+2026-01-21 10:54:17.069 [LINES] count=51 first=Power@10:54:16.866 last=Power@10:54:16.900
+2026-01-21 10:54:17.301 [LINES] count=82 first=Power@10:54:17.166 last=Power@10:54:17.283
+2026-01-21 10:54:17.728 [LINES] count=148 first=Power@10:54:17.633 last=Power@10:54:17.683
+2026-01-21 10:54:17.954 [LINES] count=117 first=Power@10:54:17.850 last=LoadingScreen@10:54:17.900
+2026-01-21 10:54:17.954 [EVENT] RemovedFromDeck entity=17 cardId=TOY_358 zone=HAND
+2026-01-21 10:54:17.955 [EVENT] RemovedFromDeck cardId=TOY_358
+2026-01-21 10:54:17.955 [REMOVE_CALL] cardId=TOY_358
+2026-01-21 10:54:17.955 [REMOVE_OK] cardId=TOY_358 newCount=1 remainingTotal=24
+2026-01-21 10:54:19.408 [LINES] count=57 first=Power@10:54:19.233 last=Power@10:54:19.250
+2026-01-21 10:54:21.045 [LINES] count=15 first=Power@10:54:21.016 last=Power@10:54:21.033
+2026-01-21 10:54:22.481 [LINES] count=53 first=Power@10:54:22.300 last=Power@10:54:22.300
+2026-01-21 10:54:23.720 [LINES] count=162 first=Power@10:54:23.550 last=Power@10:54:23.567
+2026-01-21 10:54:24.142 [LINES] count=13 first=Power@10:54:24.117 last=Power@10:54:24.134
+2026-01-21 10:54:31.263 [LINES] count=1 first=Power@10:54:31.201 last=Power@10:54:31.201
+2026-01-21 10:54:31.488 [LINES] count=140 first=Power@10:54:31.400 last=LoadingScreen@10:54:31.451
+2026-01-21 10:54:31.926 [LINES] count=17 first=Power@10:54:31.784 last=Power@10:54:31.800
+2026-01-21 10:54:32.345 [LINES] count=8 first=Power@10:54:32.251 last=Power@10:54:32.267
+2026-01-21 10:54:34.802 [LINES] count=1 first=Power@10:54:34.671 last=Power@10:54:34.671
+2026-01-21 10:54:35.026 [LINES] count=127 first=Power@10:54:34.984 last=LoadingScreen@10:54:34.984
+2026-01-21 10:54:35.026 [EVENT] RemovedFromDeck entity=19 cardId=VAC_338 zone=GRAVEYARD
+2026-01-21 10:54:35.027 [EVENT] RemovedFromDeck cardId=VAC_338
+2026-01-21 10:54:35.028 [REMOVE_CALL] cardId=VAC_338
+2026-01-21 10:54:35.029 [REMOVE_OK] cardId=VAC_338 newCount=0 remainingTotal=23
+2026-01-21 10:54:35.260 [LINES] count=15 first=Power@10:54:35.051 last=Power@10:54:35.201
+2026-01-21 10:54:36.089 [LINES] count=37 first=Power@10:54:35.884 last=Power@10:54:35.884
+2026-01-21 10:54:36.308 [LINES] count=24 first=Power@10:54:36.235 last=Power@10:54:36.284
+2026-01-21 10:54:36.728 [LINES] count=1 first=Power@10:54:36.552 last=Power@10:54:36.552
+2026-01-21 10:54:36.954 [LINES] count=139 first=Power@10:54:36.867 last=LoadingScreen@10:54:36.918
+2026-01-21 10:54:37.178 [LINES] count=1 first=Power@10:54:37.084 last=Power@10:54:37.084
+2026-01-21 10:54:37.801 [LINES] count=37 first=Power@10:54:37.767 last=Power@10:54:37.767
+2026-01-21 10:54:38.221 [LINES] count=24 first=Power@10:54:38.118 last=Power@10:54:38.167
+2026-01-21 10:54:38.639 [LINES] count=1 first=Power@10:54:38.601 last=Power@10:54:38.601
+2026-01-21 10:54:39.672 [LINES] count=204 first=Power@10:54:39.452 last=LoadingScreen@10:54:39.452
+2026-01-21 10:54:39.900 [LINES] count=55 first=Power@10:54:39.767 last=LoadingScreen@10:54:39.767
+2026-01-21 10:54:40.121 [LINES] count=45 first=Power@10:54:40.051 last=LoadingScreen@10:54:40.051
+2026-01-21 10:54:40.554 [LINES] count=41 first=Power@10:54:40.351 last=LoadingScreen@10:54:40.351
+2026-01-21 10:54:41.175 [LINES] count=175 first=Power@10:54:41.001 last=LoadingScreen@10:54:41.105
+2026-01-21 10:54:42.610 [LINES] count=15 first=Power@10:54:42.573 last=Power@10:54:42.589
+2026-01-21 10:54:44.241 [LINES] count=53 first=Power@10:54:44.072 last=Power@10:54:44.072
+2026-01-21 10:54:45.464 [LINES] count=47 first=Power@10:54:45.324 last=Power@10:54:45.339
+2026-01-21 10:54:46.704 [LINES] count=157 first=Power@10:54:46.590 last=Power@10:54:46.605
+2026-01-21 10:54:47.322 [LINES] count=13 first=Power@10:54:47.156 last=Power@10:54:47.172
+2026-01-21 10:54:51.202 [LINES] count=1 first=Power@10:54:51.190 last=Power@10:54:51.190
+2026-01-21 10:54:51.426 [LINES] count=117 first=Power@10:54:51.406 last=LoadingScreen@10:54:51.406
+2026-01-21 10:54:51.652 [LINES] count=6 first=Power@10:54:51.424 last=Power@10:54:51.440
+2026-01-21 10:54:51.873 [LINES] count=65 first=Power@10:54:51.440 last=LoadingScreen@10:54:51.698
+2026-01-21 10:54:53.312 [LINES] count=15 first=Power@10:54:53.279 last=Power@10:54:53.296
+2026-01-21 10:54:53.528 [LINES] count=34 first=Power@10:54:53.312 last=Power@10:54:53.396
+2026-01-21 10:54:55.391 [LINES] count=1 first=Power@10:54:55.346 last=Power@10:54:55.346
+2026-01-21 10:54:55.617 [LINES] count=46 first=Power@10:54:55.496 last=LoadingScreen@10:54:55.564
+2026-01-21 10:54:56.246 [LINES] count=23 first=Power@10:54:56.098 last=Power@10:54:56.230
+2026-01-21 10:54:56.473 [LINES] count=215 first=Power@10:54:56.247 last=LoadingScreen@10:54:56.347
+2026-01-21 10:54:56.897 [LINES] count=1 first=Power@10:54:56.698 last=Power@10:54:56.698
+2026-01-21 10:54:57.741 [LINES] count=87 first=Power@10:54:57.580 last=LoadingScreen@10:54:57.580
+2026-01-21 10:54:57.960 [LINES] count=77 first=Power@10:54:57.813 last=LoadingScreen@10:54:57.880
+2026-01-21 10:54:58.172 [LINES] count=30 first=Power@10:54:58.014 last=Power@10:54:58.030
+2026-01-21 10:54:58.395 [LINES] count=81 first=Power@10:54:58.180 last=LoadingScreen@10:54:58.180
+2026-01-21 10:54:58.612 [LINES] count=54 first=Power@10:54:58.480 last=LoadingScreen@10:54:58.480
+2026-01-21 10:54:58.831 [LINES] count=91 first=Power@10:54:58.780 last=LoadingScreen@10:54:58.780
+2026-01-21 10:54:59.283 [LINES] count=71 first=Power@10:54:59.080 last=Power@10:54:59.264
+2026-01-21 10:54:59.506 [LINES] count=148 first=Power@10:54:59.281 last=Power@10:54:59.281
+2026-01-21 10:54:59.937 [LINES] count=137 first=Power@10:54:59.782 last=LoadingScreen@10:54:59.796
+2026-01-21 10:55:00.982 [LINES] count=60 first=Power@10:55:00.830 last=Power@10:55:00.847
+2026-01-21 10:55:02.611 [LINES] count=15 first=Power@10:55:02.407 last=Power@10:55:02.423
+2026-01-21 10:55:04.052 [LINES] count=62 first=Power@10:55:03.917 last=Power@10:55:03.917
+2026-01-21 10:55:05.493 [LINES] count=29 first=Power@10:55:05.468 last=Power@10:55:05.484
+2026-01-21 10:55:06.129 [LINES] count=12 first=Power@10:55:06.104 last=Power@10:55:06.106
+2026-01-21 10:55:07.167 [LINES] count=56 first=Power@10:55:06.974 last=Power@10:55:06.974
+2026-01-21 10:55:08.600 [LINES] count=14 first=Power@10:55:08.536 last=Power@10:55:08.553
+2026-01-21 10:55:10.230 [LINES] count=69 first=Power@10:55:10.053 last=Power@10:55:10.053
+2026-01-21 10:55:13.301 [LINES] count=35 first=Power@10:55:13.253 last=Power@10:55:13.269
+2026-01-21 10:55:13.518 [LINES] count=49 first=Power@10:55:13.319 last=Power@10:55:13.336
+2026-01-21 10:55:14.771 [LINES] count=176 first=Power@10:55:14.587 last=Power@10:55:14.603
+2026-01-21 10:55:15.188 [LINES] count=13 first=Power@10:55:15.152 last=Power@10:55:15.169
+2026-01-21 10:55:28.218 [LINES] count=1 first=Power@10:55:28.038 last=Power@10:55:28.038
+2026-01-21 10:55:28.444 [LINES] count=219 first=Power@10:55:28.269 last=Power@10:55:28.420
+2026-01-21 10:55:28.445 [EVENT] RemovedFromDeck entity=32 cardId=VAC_408 zone=PLAY
+2026-01-21 10:55:28.445 [EVENT] RemovedFromDeck cardId=VAC_408
+2026-01-21 10:55:28.446 [REMOVE_CALL] cardId=VAC_408
+2026-01-21 10:55:28.446 [REMOVE_OK] cardId=VAC_408 newCount=1 remainingTotal=22
+2026-01-21 10:55:33.126 [LINES] count=2 first=Power@10:55:32.932 last=Power@10:55:32.932
+2026-01-21 10:55:33.356 [LINES] count=191 first=Power@10:55:33.148 last=LoadingScreen@10:55:33.216
+2026-01-21 10:55:33.574 [LINES] count=9 first=Power@10:55:33.398 last=Power@10:55:33.414
+2026-01-21 10:55:33.792 [LINES] count=1 first=Power@10:55:33.732 last=Power@10:55:33.732
+2026-01-21 10:55:34.018 [LINES] count=234 first=Power@10:55:33.938 last=LoadingScreen@10:55:33.955
+2026-01-21 10:55:34.019 [EVENT] RemovedFromDeck entity=30 cardId=VAC_521 zone=PLAY
+2026-01-21 10:55:34.019 [EVENT] RemovedFromDeck cardId=VAC_521
+2026-01-21 10:55:34.019 [REMOVE_CALL] cardId=VAC_521
+2026-01-21 10:55:34.020 [REMOVE_OK] cardId=VAC_521 newCount=1 remainingTotal=21
+2026-01-21 10:55:35.078 [LINES] count=1 first=Power@10:55:35.023 last=Power@10:55:35.023
+2026-01-21 10:55:35.500 [LINES] count=120 first=Power@10:55:35.289 last=Power@10:55:35.490
+2026-01-21 10:55:35.722 [LINES] count=140 first=Power@10:55:35.505 last=Power@10:55:35.707
+2026-01-21 10:55:35.948 [LINES] count=178 first=Power@10:55:35.723 last=Power@10:55:35.723
+2026-01-21 10:55:36.367 [LINES] count=1 first=Power@10:55:36.256 last=Power@10:55:36.256
+2026-01-21 10:55:37.200 [LINES] count=231 first=Power@10:55:37.023 last=LoadingScreen@10:55:37.122
+2026-01-21 10:55:37.620 [LINES] count=31 first=Power@10:55:37.422 last=LoadingScreen@10:55:37.422
+2026-01-21 10:55:37.850 [LINES] count=78 first=Power@10:55:37.723 last=LoadingScreen@10:55:37.723
+2026-01-21 10:55:38.068 [LINES] count=30 first=Power@10:55:38.023 last=LoadingScreen@10:55:38.023
+2026-01-21 10:55:38.279 [LINES] count=22 first=Power@10:55:38.123 last=Power@10:55:38.123
+2026-01-21 10:55:38.494 [LINES] count=30 first=Power@10:55:38.323 last=Power@10:55:38.339
+2026-01-21 10:55:39.126 [LINES] count=181 first=Power@10:55:38.923 last=LoadingScreen@10:55:38.973
+2026-01-21 10:55:39.549 [LINES] count=29 first=Power@10:55:39.473 last=Power@10:55:39.539
+2026-01-21 10:55:39.768 [LINES] count=155 first=Power@10:55:39.555 last=Power@10:55:39.555
+2026-01-21 10:55:41.211 [LINES] count=57 first=Power@10:55:41.106 last=Power@10:55:41.122
+2026-01-21 10:55:43.056 [LINES] count=15 first=Power@10:55:42.889 last=Power@10:55:42.905
+2026-01-21 10:55:44.283 [LINES] count=37 first=Power@10:55:44.173 last=Power@10:55:44.173
+2026-01-21 10:55:45.752 [LINES] count=1 first=Power@10:55:45.741 last=Power@10:55:45.741
+2026-01-21 10:55:45.969 [LINES] count=14 first=Power@10:55:45.759 last=Power@10:55:45.759
+2026-01-21 10:55:47.414 [LINES] count=61 first=Power@10:55:47.224 last=Power@10:55:47.224
+2026-01-21 10:55:48.640 [LINES] count=28 first=Power@10:55:48.475 last=Power@10:55:48.558
+2026-01-21 10:55:50.276 [LINES] count=37 first=Power@10:55:50.257 last=Power@10:55:50.274
+2026-01-21 10:55:51.922 [LINES] count=15 first=Power@10:55:51.823 last=Power@10:55:51.840
+2026-01-21 10:55:53.352 [LINES] count=178 first=Power@10:55:53.324 last=Power@10:55:53.324
+2026-01-21 10:55:53.974 [LINES] count=1 first=Power@10:55:53.960 last=Power@10:55:53.960
+2026-01-21 10:55:54.191 [LINES] count=12 first=Power@10:55:53.976 last=Power@10:55:53.976
+2026-01-21 10:56:02.905 [LINES] count=1 first=Power@10:56:02.694 last=Power@10:56:02.694
+2026-01-21 10:56:03.131 [LINES] count=301 first=Power@10:56:03.010 last=Power@10:56:03.043
+2026-01-21 10:56:03.132 [EVENT] RemovedFromDeck entity=10 cardId=VAC_410 zone=PLAY
+2026-01-21 10:56:03.132 [EVENT] RemovedFromDeck cardId=VAC_410
+2026-01-21 10:56:03.132 [REMOVE_CALL] cardId=VAC_410
+2026-01-21 10:56:03.133 [REMOVE_OK] cardId=VAC_410 newCount=0 remainingTotal=20
+2026-01-21 10:56:04.767 [LINES] count=1 first=Power@10:56:04.628 last=Power@10:56:04.628
+2026-01-21 10:56:04.999 [LINES] count=248 first=Power@10:56:04.910 last=LoadingScreen@10:56:04.927
+2026-01-21 10:56:05.218 [LINES] count=36 first=Power@10:56:05.126 last=Power@10:56:05.144
+2026-01-21 10:56:06.459 [LINES] count=36 first=Power@10:56:06.294 last=Power@10:56:06.310
+2026-01-21 10:56:07.482 [LINES] count=40 first=Power@10:56:07.444 last=Power@10:56:07.460
+2026-01-21 10:56:08.310 [LINES] count=53 first=Power@10:56:08.193 last=Power@10:56:08.210
+2026-01-21 10:56:12.395 [LINES] count=1 first=Power@10:56:12.200 last=Power@10:56:12.200
+2026-01-21 10:56:13.439 [LINES] count=12 first=Power@10:56:13.249 last=Power@10:56:13.249
+2026-01-21 10:56:14.261 [LINES] count=1 first=Power@10:56:14.050 last=Power@10:56:14.050
+2026-01-21 10:56:14.490 [LINES] count=208 first=Power@10:56:14.266 last=LoadingScreen@10:56:14.316
+2026-01-21 10:56:14.711 [LINES] count=1 first=Power@10:56:14.667 last=Power@10:56:14.667
+2026-01-21 10:56:14.936 [LINES] count=73 first=Power@10:56:14.866 last=LoadingScreen@10:56:14.916
+2026-01-21 10:56:15.554 [LINES] count=1 first=Power@10:56:15.483 last=Power@10:56:15.483
+2026-01-21 10:56:15.770 [LINES] count=68 first=Power@10:56:15.567 last=Power@10:56:15.616
+2026-01-21 10:56:15.994 [LINES] count=140 first=Power@10:56:15.816 last=LoadingScreen@10:56:15.965
+2026-01-21 10:56:21.695 [LINES] count=49 first=Power@10:56:21.550 last=Power@10:56:21.567
+2026-01-21 10:56:22.314 [LINES] count=1 first=Power@10:56:22.302 last=Power@10:56:22.302
+2026-01-21 10:56:22.531 [LINES] count=43 first=Power@10:56:22.318 last=Power@10:56:22.419
+2026-01-21 10:56:24.176 [LINES] count=76 first=Power@10:56:24.118 last=Power@10:56:24.135
+2026-01-21 10:56:25.214 [LINES] count=22 first=Power@10:56:25.168 last=Power@10:56:25.168
+2026-01-21 10:56:25.431 [LINES] count=30 first=Power@10:56:25.386 last=Power@10:56:25.401
+2026-01-21 10:56:26.666 [LINES] count=92 first=Power@10:56:26.535 last=Power@10:56:26.655
+2026-01-21 10:56:27.487 [LINES] count=54 first=Power@10:56:27.371 last=Power@10:56:27.388
+2026-01-21 10:56:28.120 [LINES] count=1 first=Power@10:56:28.105 last=Power@10:56:28.105
+2026-01-21 10:56:28.341 [LINES] count=40 first=Power@10:56:28.120 last=Power@10:56:28.154
+2026-01-21 10:56:42.976 [LINES] count=2 first=LoadingScreen@10:56:42.915 last=LoadingScreen@10:56:42.915
+2026-01-21 10:56:43.191 [LINES] count=4 first=LoadingScreen@10:56:43.066 last=LoadingScreen@10:56:43.066
+2026-01-21 10:56:43.407 [LINES] count=2 first=LoadingScreen@10:56:43.357 last=LoadingScreen@10:56:43.357
+2026-01-21 10:56:44.448 [LINES] count=3 first=LoadingScreen@10:56:44.294 last=LoadingScreen@10:56:44.294
+2026-01-21 10:56:45.501 [LINES] count=5 first=LoadingScreen@10:56:45.335 last=LoadingScreen@10:56:45.335
+2026-01-21 10:56:46.531 [LINES] count=1 first=LoadingScreen@10:56:46.327 last=LoadingScreen@10:56:46.327
+2026-01-21 11:30:28.148 [START] logDir=C:\Program Files (x86)\Hearthstone\Logs\Hearthstone_2026_01_21_10_45_19
+2026-01-21 11:30:28.152 [START] power=C:\Program Files (x86)\Hearthstone\Logs\Hearthstone_2026_01_21_10_45_19\Power.log
+2026-01-21 11:30:28.152 [START] loading=C:\Program Files (x86)\Hearthstone\Logs\Hearthstone_2026_01_21_10_45_19\LoadingScreen.log
+2026-01-21 11:30:28.154 [WATCH] switchTo=C:\Program Files (x86)\Hearthstone\Logs\Hearthstone_2026_01_21_10_45_19
+2026-01-21 11:30:28.154 [WATCH] power=C:\Program Files (x86)\Hearthstone\Logs\Hearthstone_2026_01_21_10_45_19\Power.log
+2026-01-21 11:30:28.155 [WATCH] loading=C:\Program Files (x86)\Hearthstone\Logs\Hearthstone_2026_01_21_10_45_19\LoadingScreen.log
+2026-01-21 11:30:28.175 [ROOT_WATCH] root=C:\Program Files (x86)\Hearthstone\Logs

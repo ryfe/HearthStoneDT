@@ -31,8 +31,8 @@ namespace HearthStoneDT.UI.Services
         private OverlayController? _autoResetOverlays;
         private Func<DeckDefinition?>? _autoResetGetDeck;
 
-        public event Action<string>? CardRemovedFromDeck;
-        public event Action<string>? CardAddedToDeck;
+        public event Action<string, int>? CardRemovedFromDeck;
+        public event Action<string, int>? CardAddedToDeck;
         public event Action<DateTime>? SessionStarted;
 
         public bool IsRunning => _watch != null;
@@ -257,16 +257,16 @@ namespace HearthStoneDT.UI.Services
         }
 
         // IGameEventSink
-        public void OnCardRemovedFromDeck(string cardId)
+        public void OnCardRemovedFromDeck(string cardId, int entityId)
         {
-            DebugLog.Write($"[EVENT] RemovedFromDeck cardId={cardId}");
-            CardRemovedFromDeck?.Invoke(cardId);
+            DebugLog.Write($"[EVENT] RemovedFromDeck cardId={cardId} entity={entityId}");
+            CardRemovedFromDeck?.Invoke(cardId, entityId);
         }
 
-        public void OnCardAddedToDeck(string cardId)
+        public void OnCardAddedToDeck(string cardId, int entityId)
         {
-            DebugLog.Write($"[EVENT] AddedToDeck cardId={cardId}");
-            CardAddedToDeck?.Invoke(cardId);
+            DebugLog.Write($"[EVENT] AddedToDeck cardId={cardId} entity={entityId}");
+            CardAddedToDeck?.Invoke(cardId, entityId);
         }
 
         /// <summary>

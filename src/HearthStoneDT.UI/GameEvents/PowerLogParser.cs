@@ -191,7 +191,7 @@ namespace HearthStoneDT.UI.GameEvents
                 if(_cardIdByEntity.TryGetValue(entityId, out var cardId) && !string.IsNullOrWhiteSpace(cardId))
                 {
                     DebugLog.Write($"[EVENT] RemovedFromDeck cardId={cardId} zone={newZone}");
-                    _sink.OnCardRemovedFromDeck(cardId);
+                    _sink.OnCardRemovedFromDeck(cardId, entityId);
                 }
                 else
                     _pendingExit.Add(entityId);
@@ -208,7 +208,7 @@ namespace HearthStoneDT.UI.GameEvents
                 if(_cardIdByEntity.TryGetValue(entityId, out var cardId) && !string.IsNullOrWhiteSpace(cardId))
                 {
                     DebugLog.Write($"[EVENT] AddedToDeck cardId={cardId}");
-                    _sink.OnCardAddedToDeck(cardId);
+                    _sink.OnCardAddedToDeck(cardId, entityId);
                 }
                 else
                     _pendingEnter.Add(entityId);
@@ -245,7 +245,7 @@ namespace HearthStoneDT.UI.GameEvents
                 {
                     _pendingExit.Remove(entityId);
                     DebugLog.Write($"[EVENT] RemovedFromDeck(pending) entity={entityId} ctrl={(ctrl == 0 ? "?" : ctrl.ToString())} cardId={cardId}");
-                    _sink.OnCardRemovedFromDeck(cardId);
+                    _sink.OnCardRemovedFromDeck(cardId, entityId);
                 }
             }
 
@@ -256,7 +256,7 @@ namespace HearthStoneDT.UI.GameEvents
                 {
                     _pendingEnter.Remove(entityId);
                     DebugLog.Write($"[EVENT] AddedToDeck(pending) entity={entityId} ctrl={(ctrl2 == 0 ? "?" : ctrl2.ToString())} cardId={cardId}");
-                    _sink.OnCardAddedToDeck(cardId);
+                    _sink.OnCardAddedToDeck(cardId, entityId);
                 }
             }
         }
